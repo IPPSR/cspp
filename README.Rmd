@@ -13,12 +13,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cspp
+# cspp: A Packge for The Correlates of State Policy Project Data
 
 <!-- badges: start -->
 <!-- badges: end -->
 
 
+**cspp** is a package designed to allow a user with only basic knowledge of R to find variables on state politics and policy, create and export datasets from these variables, subset the datasets by states and years, create map visualizations, and export citations to common file formats (e.g., `.bib`).
+
+## The Correlates of State Policy
 
 [The Correlates of State Policy Project](http://ippsr.msu.edu/public-policy/correlates-state-policy) compiles more than 900 variables across 50 states from 1900-2016. The variables cover 16 broad categories:
 
@@ -38,8 +41,6 @@ knitr::opts_chunk$set(
 * Labor
 * Transportation
 * Regulatory Policy
-
-This package is designed to allow a user with only basic knowledge of R to find variables, create and export datasets from these variables, subset the datasets by states and years, create map visualizations, and export citations to common file formats (e.g., `.bib`).
 
 
 ## Basic Use: Finding and Returning State Politics Data
@@ -216,3 +217,8 @@ generate_map(get_cspp_data(var_category = "demographics") %>%
   theme(legend.position = "none") +
   ggtitle("% Population Over 65")
 ```
+
+# Contact
+
+[**Caleb Lucas**](https://caleblucas.com/) - Ph.D. Candidate, Michigan State University <br />
+[**Josh McCrain**](http://joshuamccrain.com) - Post-doc, IPPSR, Michigan State University ([Twitter](https://twitter.com/joshmccrain))

@@ -1,11 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cspp
+# cspp: A Packge for The Correlates of State Policy Project Data
 
 <!-- badges: start -->
 
 <!-- badges: end -->
+
+**cspp** is a package designed to allow a user with only basic knowledge
+of R to find variables on state politics and policy, create and export
+datasets from these variables, subset the datasets by states and years,
+create map visualizations, and export citations to common file formats
+(e.g., `.bib`).
+
+## The Correlates of State Policy
 
 [The Correlates of State Policy
 Project](http://ippsr.msu.edu/public-policy/correlates-state-policy)
@@ -28,11 +36,6 @@ variables cover 16 broad categories:
   - Labor
   - Transportation
   - Regulatory Policy
-
-This package is designed to allow a user with only basic knowledge of R
-to find variables, create and export datasets from these variables,
-subset the datasets by states and years, create map visualizations, and
-export citations to common file formats (e.g., `.bib`).
 
 ## Basic Use: Finding and Returning State Politics Data
 
@@ -346,3 +349,10 @@ generate_map(get_cspp_data(var_category = "demographics") %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-15-1.png" width="60%" />
+
+# Contact
+
+[**Caleb Lucas**](https://caleblucas.com/) - Ph.D. Candidate, Michigan
+State University <br /> [**Josh McCrain**](http://joshuamccrain.com) -
+Post-doc, IPPSR, Michigan State University
+([Twitter](https://twitter.com/joshmccrain))
