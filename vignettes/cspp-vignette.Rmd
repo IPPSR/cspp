@@ -1,5 +1,5 @@
 ---
-title: "cspp: A Packge for The Correlates of State Policy Project Data"
+title: "cspp: A Package for The Correlates of State Policy Project Data"
 author: 
 - name: "<a href='https://caleblucas.com/' target='_blank'>Caleb Lucas</a><br /><a href='http://joshuamccrain.com' target='_blank'>Joshua McCrain</a>"
 output: rmarkdown::html_vignette

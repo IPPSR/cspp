@@ -6,7 +6,8 @@
   # print cite here for package and for the overall dataset
   packageStartupMessage("\nYou are using version X of the CSPP data.\n   Check the latest version with get_latest()\n")
   packageStartupMessage("Please cite:\n")
-  packageStartupMessage("[add package cite]\n")
+  packageStartupMessage("Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data.")
+  packageStartupMessage("R package version 0.1.0.\n")
   packageStartupMessage("Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2.")
   packageStartupMessage("East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).")
 }

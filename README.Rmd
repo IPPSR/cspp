@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cspp: A Packge for The Correlates of State Policy Project Data
+# cspp: A Package for The Correlates of State Policy Project Data
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -66,7 +66,7 @@ cspp_data <- get_cspp_data(vars = demo_variables$variable,
 
 ```
 
-The `get_cspp_data` function returns a properly formatted state-year panel facilitating regressions and merging based on common state identifiers.
+The `get_cspp_data` function returns a properly formatted state-year panel, facilitating regressions and merging based on common state identifiers.
 ```{r}
 library(tibble)
 glimpse(cspp_data[1:15],)
@@ -226,5 +226,5 @@ generate_map(get_cspp_data(var_category = "demographics") %>%
 
 # Contact
 
-[**Caleb Lucas**](https://caleblucas.com/) - Ph.D. Candidate, Michigan State University <br />
+[**Caleb Lucas**](https://caleblucas.com/) - Ph.D. Candidate, Michigan State University ([Twitter](https://twitter.com/caleblucas)) <br />
 [**Josh McCrain**](http://joshuamccrain.com) - Post-doc, IPPSR, Michigan State University ([Twitter](https://twitter.com/joshmccrain))
