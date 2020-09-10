@@ -45,6 +45,12 @@ knitr::opts_chunk$set(
 
 ## Basic Use: Finding and Returning State Politics Data
 
+```{r eval=F}
+library(devtools)
+install_github("correlatesstatepolicy/cspp")
+```
+
+
 The primary functions in this package are `get_var_info` and `get_cspp_data`. The basic workflow for using this package is to 1) find variables of interest and 2) pull them from the full data into a dataframe within the R environment. Below is a basic working example.
 
 ```{r message = FALSE}
