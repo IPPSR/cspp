@@ -47,6 +47,10 @@
 
 get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "bib", print_cites = FALSE, print_nomatch = TRUE){
 
+  if(is.data.frame(var_names)){
+    var_names <- colnames(var_names)
+  }
+  
   if(!(format %in% c("bib","csv","txt"))){
     stop("Please choose to write the cites to a bib, csv, or txt file.")
   }
