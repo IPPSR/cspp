@@ -3,6 +3,7 @@
 export(generate_map)
 export(get_cites)
 export(get_cspp_data)
+export(get_network_data)
 export(get_var_info)
 import(ggplot2)
 import(mapproj)
