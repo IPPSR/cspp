@@ -47,6 +47,10 @@
 
 get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "bib", print_cites = FALSE, print_nomatch = TRUE){
 
+  if(is.data.frame(var_names)){
+    var_names <- colnames(var_names)
+  }
+  
   if(!(format %in% c("bib","csv","txt"))){
     stop("Please choose to write the cites to a bib, csv, or txt file.")
   }
@@ -70,7 +74,7 @@ get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "
   }
 
   # Add package and dataset cite to the cite list
-  package_cite <- c("[insert package cite]")
+  package_cite <- c("Caleb Lucas and Joshua McCrain (2020). cspp: cspp: A Packge for The Correlates of State Policy Project Data. R package version 0.1.0.")
   dataset_cite <- c("Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).")
 
   # change to 'cite' later, use 'sources' now
