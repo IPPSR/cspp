@@ -28,11 +28,11 @@
 #'
 #' @importFrom dplyr "%>%" filter left_join group_by mutate n summarize
 #' @importFrom tidyselect all_of any_of
-#' @importFrom purrr map_lgl
 #'
 #' @export
 #'
 #' @examples
+#'
 #' # Load full network data:
 #' network.df <- get_network_data()
 #'

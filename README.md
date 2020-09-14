@@ -68,7 +68,15 @@ panel, facilitating regressions and merging based on common state
 identifiers.
 
 ``` r
-library(tibble)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 glimpse(cspp_data[1:15],)
 #> Rows: 561
 #> Columns: 15
@@ -321,14 +329,6 @@ containing only certain states, it only plots those states:
 
 ``` r
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 
 
 generate_map(get_cspp_data(var_category = "demographics") %>%

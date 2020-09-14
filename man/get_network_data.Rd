@@ -31,6 +31,7 @@ towards the state in the \code{State1} column. For instance, the
 with a destination in \code{State1}.
 }
 \examples{
+
 # Load full network data:
 network.df <- get_network_data()
 

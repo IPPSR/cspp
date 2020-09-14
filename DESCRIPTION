@@ -1,6 +1,6 @@
 Package: cspp
 Type: Package
-Title: cspp: A Packge for The Correlates of State Policy Project Data
+Title: cspp: A Package for The Correlates of State Policy Project Data
 Version: 0.1.0
 Author: Caleb Lucas (https://caleblucas.com/) and Joshua McCrain (http://joshuamccrain.com/)
 Maintainer: Josh McCrain <josh.mccrain@gmail.com>
@@ -19,9 +19,11 @@ Imports:
     ggplot2,
     mapproj,
     rlang,
-    haven
+    haven,
+    purrr
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr

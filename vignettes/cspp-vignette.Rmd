@@ -51,7 +51,7 @@ cspp_data <- get_cspp_data(vars = demo_variables$variable,
 
 The `get_cspp_data` function returns a properly formatted state-year panel facilitating regressions and merging based on common state identifiers.
 ```{r}
-library(tibble)
+library(dplyr)
 glimpse(cspp_data[1:15],)
 ```
 
