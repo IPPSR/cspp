@@ -28,6 +28,17 @@ var_names_db$var_names[var_names_db$var_names=="fcpi...384"] <- "fcpi"
 
 var_names_db <- filter(var_names_db, !(var_names %in% c("fcpi...388", "govname2...47")))
 
+note_vars <- c("bfh_cpi_multiplier", "gov_fin_fy", "housing_prices_quar",
+               "noofvotes", "cartheftrate", "carthefttotal",
+               "murderrate", "murdertotal", "propcrimerate",
+               "propcrimetotal", "raperate", "rapetotal",
+               "bus_energy_consum", "bus_energy_consum_pc")
+
+var_names_db <- var_names_db %>%
+  ungroup %>%
+  mutate(addl_notes = ifelse(var_names %in% note_vars, "See codebook", NA))
+
+
 # now read in full dataset and save to raw-data:
 
 correlates <- read.csv("data-raw/correlatesofstatepolicyprojectv2_2.csv", stringsAsFactors = F)

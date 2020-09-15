@@ -226,6 +226,18 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
 
     }
 
+    # check if any of the variables have additional footnotes in the codebook:
+    note_vars <- c("bfh_cpi_multiplier", "gov_fin_fy", "housing_prices_quar",
+                   "noofvotes", "cartheftrate", "carthefttotal",
+                   "murderrate", "murdertotal", "propcrimerate",
+                   "propcrimetotal", "raperate", "rapetotal",
+                   "bus_energy_consum", "bus_energy_consum_pc")
+
+    if(length(names(data)[names(data) %in% note_vars]) > 0) {
+      message("Note: the following variables have additional footnotes in the codebook (https://ippsr.msu.edu/sites/default/files/CorrelatesCodebook.pdf):\n",
+              paste(names(data)[names(data) %in% note_vars], collapse = ", "))
+    }
+
     return(data)
 
   }
