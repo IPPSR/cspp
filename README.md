@@ -80,21 +80,21 @@ library(dplyr)
 glimpse(cspp_data[1:15],)
 #> Rows: 561
 #> Columns: 15
-#> $ year          <int> 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2…
-#> $ st.abb        <chr> "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "…
-#> $ stateno       <dbl> 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.5, 9.0, 10.0,…
-#> $ state         <chr> "Alabama", "Alaska", "Arizona", "Arkansas", "California…
-#> $ state_fips    <int> 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19…
-#> $ state_icpsr   <int> 41, 81, 61, 42, 71, 62, 1, 11, 55, 43, 44, 82, 63, 21, …
-#> $ poptotal      <int> 4451687, 627428, 5166810, 2678217, 33998767, 4327788, 3…
-#> $ popdensity    <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-#> $ popfemale     <dbl> 2300000, 302820, 2600000, 1400000, 17000000, 2100000, 1…
-#> $ pctpopfemale  <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-#> $ popmale       <dbl> 2100000, 324112, 2600000, 1300000, 17000000, 2200000, 1…
-#> $ pctpopmale    <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-#> $ popunder5     <dbl> 295992, 47591, 382386, 181585, 2500000, 297505, 223344,…
-#> $ pctpopunder14 <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-#> $ pop5to17      <dbl> 827430, 143126, 984561, 498784, 6800000, 803290, 618344…
+#> $ year          <int> 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000,...
+#> $ st.abb        <chr> "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC",...
+#> $ stateno       <dbl> 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.5, 9.0, 10....
+#> $ state         <chr> "Alabama", "Alaska", "Arizona", "Arkansas", "Californ...
+#> $ state_fips    <int> 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, ...
+#> $ state_icpsr   <int> 41, 81, 61, 42, 71, 62, 1, 11, 55, 43, 44, 82, 63, 21...
+#> $ poptotal      <int> 4451687, 627428, 5166810, 2678217, 33998767, 4327788,...
+#> $ popdensity    <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ popfemale     <dbl> 2300000, 302820, 2600000, 1400000, 17000000, 2100000,...
+#> $ pctpopfemale  <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ popmale       <dbl> 2100000, 324112, 2600000, 1300000, 17000000, 2200000,...
+#> $ pctpopmale    <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ popunder5     <dbl> 295992, 47591, 382386, 181585, 2500000, 297505, 22334...
+#> $ pctpopunder14 <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ pop5to17      <dbl> 827430, 143126, 984561, 498784, 6800000, 803290, 6183...
 ```
 
 Even more generally, you can load the entire set of variables and/or the
@@ -107,6 +107,8 @@ all_variables <- get_var_info()
 
 # Full dataset
 all_data <- get_cspp_data()
+#> Note: the following variables have additional footnotes in the codebook (https://ippsr.msu.edu/sites/default/files/CorrelatesCodebook.pdf):
+#> bfh_cpi_multiplier, gov_fin_fy, housing_prices_quar, noofvotes, cartheftrate, carthefttotal, murderrate, murdertotal, propcrimerate, propcrimetotal, raperate, rapetotal, bus_energy_consum, bus_energy_consum_pc
 ```
 
 ## Finding Variables
@@ -122,17 +124,17 @@ get_var_info(var_names = c("pop","femal"))
 #> # A tibble: 31 x 6
 #>    variable  years   short_desc      long_desc          sources         category
 #>    <chr>     <chr>   <chr>           <chr>              <chr>           <chr>   
-#>  1 poptotal  1900-2… Population tot… Total population … "U.S. Census B… demogra…
-#>  2 popdensi… 1975-1… Population den… Number of people … "http://www.ip… demogra…
-#>  3 popfemale 1994-2… Female populat… The number of res… "CQ Press. 'St… demogra…
-#>  4 pctpopfe… 2012-2… Female populat… Percentage of the… "U.S. Census B… demogra…
-#>  5 popmale   1994-2… Male population The number of res… "CQ Press. 'St… demogra…
-#>  6 pctpopma… 2012-2… Male populatio… Percentage of the… "U.S. Census B… demogra…
-#>  7 popunder5 1994-2… Population und… The number of res… "CQ Press. 'St… demogra…
-#>  8 pctpopun… 2013-2… Population und… Percentage of the… "U.S. Census B… demogra…
-#>  9 pop5to17  1994-2… Population fro… The number of res… "CQ Press. 'St… demogra…
-#> 10 pop18to24 1994-2… Population fro… The number of res… "CQ Press. 'St… demogra…
-#> # … with 21 more rows
+#>  1 poptotal  1900-2~ Population tot~ Total population ~ "U.S. Census B~ demogra~
+#>  2 popdensi~ 1975-1~ Population den~ Number of people ~ "http://www.ip~ demogra~
+#>  3 popfemale 1994-2~ Female populat~ The number of res~ "CQ Press. 'St~ demogra~
+#>  4 pctpopfe~ 2012-2~ Female populat~ Percentage of the~ "U.S. Census B~ demogra~
+#>  5 popmale   1994-2~ Male population The number of res~ "CQ Press. 'St~ demogra~
+#>  6 pctpopma~ 2012-2~ Male populatio~ Percentage of the~ "U.S. Census B~ demogra~
+#>  7 popunder5 1994-2~ Population und~ The number of res~ "CQ Press. 'St~ demogra~
+#>  8 pctpopun~ 2013-2~ Population und~ Percentage of the~ "U.S. Census B~ demogra~
+#>  9 pop5to17  1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
+#> 10 pop18to24 1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
+#> # ... with 21 more rows
 ```
 
 A similar line of code using the `related_to` parameter, instead of
@@ -145,17 +147,17 @@ get_var_info(related_to = c("pop", "femal"))
 #> # A tibble: 96 x 6
 #>    variable  years   short_desc      long_desc          sources         category
 #>    <chr>     <chr>   <chr>           <chr>              <chr>           <chr>   
-#>  1 poptotal  1900-2… Population tot… Total population … "U.S. Census B… demogra…
-#>  2 popdensi… 1975-1… Population den… Number of people … "http://www.ip… demogra…
-#>  3 popfemale 1994-2… Female populat… The number of res… "CQ Press. 'St… demogra…
-#>  4 pctpopfe… 2012-2… Female populat… Percentage of the… "U.S. Census B… demogra…
-#>  5 popmale   1994-2… Male population The number of res… "CQ Press. 'St… demogra…
-#>  6 pctpopma… 2012-2… Male populatio… Percentage of the… "U.S. Census B… demogra…
-#>  7 popunder5 1994-2… Population und… The number of res… "CQ Press. 'St… demogra…
-#>  8 pctpopun… 2013-2… Population und… Percentage of the… "U.S. Census B… demogra…
-#>  9 pop5to17  1994-2… Population fro… The number of res… "CQ Press. 'St… demogra…
-#> 10 pop18to24 1994-2… Population fro… The number of res… "CQ Press. 'St… demogra…
-#> # … with 86 more rows
+#>  1 poptotal  1900-2~ Population tot~ Total population ~ "U.S. Census B~ demogra~
+#>  2 popdensi~ 1975-1~ Population den~ Number of people ~ "http://www.ip~ demogra~
+#>  3 popfemale 1994-2~ Female populat~ The number of res~ "CQ Press. 'St~ demogra~
+#>  4 pctpopfe~ 2012-2~ Female populat~ Percentage of the~ "U.S. Census B~ demogra~
+#>  5 popmale   1994-2~ Male population The number of res~ "CQ Press. 'St~ demogra~
+#>  6 pctpopma~ 2012-2~ Male populatio~ Percentage of the~ "U.S. Census B~ demogra~
+#>  7 popunder5 1994-2~ Population und~ The number of res~ "CQ Press. 'St~ demogra~
+#>  8 pctpopun~ 2013-2~ Population und~ Percentage of the~ "U.S. Census B~ demogra~
+#>  9 pop5to17  1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
+#> 10 pop18to24 1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
+#> # ... with 86 more rows
 ```
 
 You can also return whole categories of variables. The full list of
@@ -356,6 +358,114 @@ generate_map(get_cspp_data(var_category = "demographics") %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="60%" />
+
+## Network data
+
+The function `get_network_data` returns a dataset from the [CSPP state
+networks data](http://ippsr.msu.edu/public-policy/state-networks)
+consisting of 120 variables. The data is structured as state dyads (an
+edge list).
+
+``` r
+# Returns dataframe of state dyads
+head(get_network_data())
+#> # A tibble: 6 x 120
+#>   State1 State2 st.abb2 st.abb1 dyadid S1region S2region S1division S2division
+#>   <chr>  <chr>  <chr>   <chr>   <chr>  <chr>    <chr>    <chr>      <chr>     
+#> 1 Alaba~ Alaska AK      AL      AL-AK  South    West     East Sout~ Pacific   
+#> 2 Alaba~ Arizo~ AZ      AL      AL-AZ  South    West     East Sout~ Mountain  
+#> 3 Alaba~ Arkan~ AR      AL      AL-AR  South    South    East Sout~ West Sout~
+#> 4 Alaba~ Calif~ CA      AL      AL-CA  South    West     East Sout~ Pacific   
+#> 5 Alaba~ Color~ CO      AL      AL-CO  South    West     East Sout~ Mountain  
+#> 6 Alaba~ Conne~ CT      AL      AL-CT  South    Northea~ East Sout~ New Engla~
+#> # ... with 111 more variables: Border <dbl>, Distance <dbl>, State1_Lat <dbl>,
+#> #   State1_Long <dbl>, State2_Lat <dbl>, State2_Long <dbl>,
+#> #   ACS_Migration <dbl>, PopDif <dbl>, State1_Pop <dbl>, State2_Pop <dbl>,
+#> #   IncomingFlights <dbl>, IRS_migration <dbl>, Income <dbl>,
+#> #   IRS_migration_2010 <dbl>, Income_2010 <dbl>, Imports <dbl>, GSPDif <dbl>,
+#> #   S1GSP <dbl>, S2GSP <dbl>, DemDif <dbl>, S1AvgDem <dbl>, S2AvgDem <dbl>,
+#> #   S1SenDemProp <dbl>, S1HSDemProp <dbl>, S2SenDemProp <dbl>,
+#> #   S2HSDemProp <dbl>, IdeologyDif <dbl>, PIDDif <dbl>, S1Ideology <dbl>,
+#> #   S1PID <dbl>, S2Ideology <dbl>, S2PID <dbl>, policy_diffusion_tie <dbl>,
+#> #   policy_diffusion_2015 <dbl>, policy_diffusion_2000.2015 <dbl>,
+#> #   LibDif <dbl>, ELibDif <dbl>, SLibDif <dbl>, S1EconomicLiberalism <dbl>,
+#> #   S1SocialLiberalism <dbl>, S2EconomicLiberalism <dbl>,
+#> #   S2SocialLiberalism <dbl>, MassSocLibDif <dbl>, MassEconLibDif <dbl>,
+#> #   PolSocLibDif <dbl>, PolEconLibDif <dbl>, State1PolSocLib <dbl>,
+#> #   State1PolEconLib <dbl>, State1MassSocLib <dbl>, State1MassEconLib <dbl>,
+#> #   State2PolSocLib <dbl>, State2PolEconLib <dbl>, State2MassSocLib <dbl>,
+#> #   State2MassEconLib <dbl>, perceived_similarity <dbl>, RaceDif <dbl>,
+#> #   LatinoDif <dbl>, WhiteDif <dbl>, BlackDif <dbl>, AsianDif <dbl>,
+#> #   NativeDif <dbl>, S1Latino <dbl>, S1White <dbl>, S1Black <dbl>,
+#> #   S1Asian <dbl>, S1Native <dbl>, S2Latino <dbl>, S2White <dbl>,
+#> #   S2Black <dbl>, S2Asian <dbl>, S2Native <dbl>, ReligDif <dbl>,
+#> #   ChristianDif <dbl>, EvangelicalDif <dbl>, MainlineDif <dbl>, BPDif <dbl>,
+#> #   CatholicDif <dbl>, MormonDif <dbl>, JewishDif <dbl>, MuslimDif <dbl>,
+#> #   BuddhistDif <dbl>, HinduDif <dbl>, NonesDif <dbl>, NPDif <dbl>,
+#> #   ReligiosityDif <dbl>, S1Christian <dbl>, S1Evangelical <dbl>,
+#> #   S1Mainline <dbl>, S1BlackProt <dbl>, S1Catholic <dbl>, S1Mormon <dbl>,
+#> #   S1Jewish <dbl>, S1Muslim <dbl>, S1Buddhist <dbl>, S1Hindu <dbl>,
+#> #   S1Nones <dbl>, S1NothingParticular <dbl>, S1HighlyReligious <dbl>,
+#> #   S2Christian <dbl>, S2Evangelical <dbl>, ...
+```
+
+The function has two optional parameters `category` and `merge_data`. If
+a category or string of categories is specified, it returns variables
+only in that category (see the data documentation in the link above).
+Category options are “Distance Travel Migration”, “Economic”,
+“Political”, “Policy”, “Demographic”.
+
+``` r
+network.df <- get_network_data(category = c("Economic", "Political"))
+
+names(network.df)
+#>  [1] "State1"             "State2"             "st.abb2"           
+#>  [4] "st.abb1"            "dyadid"             "IRS_migration"     
+#>  [7] "Income"             "IRS_migration_2010" "Income_2010"       
+#> [10] "Imports"            "GSPDif"             "S1GSP"             
+#> [13] "S2GSP"              "DemDif"             "S1AvgDem"          
+#> [16] "S2AvgDem"           "S1SenDemProp"       "S1HSDemProp"       
+#> [19] "S2SenDemProp"       "S2HSDemProp"        "IdeologyDif"       
+#> [22] "PIDDif"             "S1Ideology"         "S1PID"             
+#> [25] "S2Ideology"         "S2PID"
+```
+
+`merge_data` simplifies merging in data from the `get_cspp_data`
+function. The object passed to `merge_data` must be a dataframe with a
+variable named `st.abb`, or a dataframe generated by `get_cspp_data`. If
+the dataframe passed to this parameter has more than one observation per
+state (a panel) then this function averages over all values per state
+prior to merging.
+
+``` r
+cspp_data <- get_cspp_data(vars = c("sess_length", "hou_majority"), years = seq(1999, 2000))
+
+network.df <- get_network_data(category = "Distance Travel Migration",
+                               merge_data  = cspp_data)
+#> Warning in get_network_data(category = "Distance Travel Migration", merge_data
+#> = cspp_data): There are multiple observations per state in the `data` dataframe.
+#> Creating one observation per state (dplyr::summarize()) prior to merging...
+
+names(network.df)
+#>  [1] "State1"          "State2"          "st.abb2"         "st.abb1"        
+#>  [5] "dyadid"          "S1region"        "S2region"        "S1division"     
+#>  [9] "S2division"      "Border"          "Distance"        "State1_Lat"     
+#> [13] "State1_Long"     "State2_Lat"      "State2_Long"     "ACS_Migration"  
+#> [17] "PopDif"          "State1_Pop"      "State2_Pop"      "IncomingFlights"
+#> [21] "sess_length"     "hou_majority"
+
+library(dplyr)
+
+head(cspp_data %>% arrange(st.abb))
+#>   year st.abb stateno    state state_fips state_icpsr sess_length hou_majority
+#> 1 1999     AK       2   Alaska          2          81      167.56        0.752
+#> 2 2000     AK       2   Alaska          2          81          NA        0.752
+#> 3 1999     AL       1  Alabama          1          41       60.00       -0.129
+#> 4 2000     AL       1  Alabama          1          41          NA       -0.115
+#> 5 1999     AR       4 Arkansas          5          42       63.19        0.118
+#> 6 2000     AR       4 Arkansas          5          42          NA        0.118
+# the merged value of Alaska's hou_majority value will be mean(c(-0.129, -0.115))
+```
 
 # Contact
 
