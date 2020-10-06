@@ -89,6 +89,7 @@ You can also return whole categories of variables. The full list of variable cat
 # See variable categories:
 unique(get_var_info()$category)
 ```
+
 ```{r}
 # Find variables by category:
 var_cats <- get_var_info(categories = c("gun control", "labor"))
