@@ -50,7 +50,7 @@ get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "
   if(is.data.frame(var_names)){
     var_names <- colnames(var_names)
   }
-  
+
   if(!(format %in% c("bib","csv","txt"))){
     stop("Please choose to write the cites to a bib, csv, or txt file.")
   }
@@ -74,24 +74,48 @@ get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "
   }
 
   # Add package and dataset cite to the cite list
-  package_cite <- c("Caleb Lucas and Joshua McCrain (2020). cspp: cspp: A Packge for The Correlates of State Policy Project Data. R package version 0.1.0.")
   dataset_cite <- c("Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).")
+  dataset_bib  <- c("@misc{cspp_data,
+                      title = {The Correlates of State Policy Project v.2.2},
+                      author = {Marty P. Jordan and Matt Grossmann},
+                      year = {2020},
+                      howpublished= {http://ippsr.msu.edu/public-policy/correlates-state-policy},
+                      note = {East Lansing, MI: Institute for Public Policy and Social Research (IPPSR)}
+                    }")
 
-  # change to 'cite' later, use 'sources' now
+  package_cite <- c("Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data. R package version 0.1.0.")
+  package_bib  <- c("@Manual{cspp_package,
+                      title = {cspp: A Package for The Correlates of State Policy Project Data},
+                      author = {Caleb Lucas and Josh McCrain},
+                      year = {2020},
+                      note = {R package version 0.1.0},
+                      url = {http://ippsr.msu.edu/public-policy/correlates-state-policy}
+                    }")
+
   cites_df <- codebook %>%
     dplyr::filter(.data$variable %in% var_names) %>%
-    dplyr::add_row(sources = package_cite) %>%
-    dplyr::add_row(sources = dataset_cite) %>%
+    dplyr::add_row(variable = "cspp_dataset",
+                   plaintext_cite = dataset_cite,
+                   bibtex_cite = dataset_bib) %>%
+    dplyr::add_row(variable = "cspp_package",
+                   plaintext_cite = package_cite,
+                   bibtex_cite = package_bib) %>%
     as.data.frame()
 
-  cites_vec <- as.vector(cites_df$sources)
+
+  cites_df <- cites_df[,c("variable","plaintext_cite","bibtex_cite","plaintext_cite2","bibtex_cite2","plaintext_cite3",
+                          "bibtex_cite3","years","short_desc","long_desc","sources","category")]
+
+  cites_vec1 <- as.vector(cites_df$plaintext_cite)
+  cites_vec2 <- as.vector(cites_df$plaintext_cite2)
+  cites_vec  <- c(cites_vec1,cites_vec2)
+  cites_vec  <- cites_vec[!is.na(cites_vec)]
 
   if(print_cites == TRUE){
-    cat(paste(cites_vec,collapse = "\n\n"))
+    # cat("Note some variables ")
+    # cat(paste(cites_vec,collapse = "\n\n"))
+    cat(paste(cites_df$variable," = ",cites_df$plaintext_cite,collapse = "\n\n"))
   }
-
-  cites_df <- data.frame(var_name = c("cspp","CSPP Dataset",na.omit(cites_df$variable)),
-                         citation = cites_vec)
 
   if(write_out == TRUE){
     if(format == "bib"){
