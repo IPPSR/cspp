@@ -121,23 +121,28 @@ get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "
     # cat(paste(cites_df$variable," = ",cites_df$plaintext_cite,collapse = "\n\n"))
     for(i in 1:nrow(cites_df)){
       cat("----------\n")
-      cat("variable = ",cites_df$variable[i],collapse = "\n")
-      cat("first cite = ",cites_df$plaintext_cite[i],collapse = "\n\n")
-      cat("second cite (might not be applicable) = ",cites_df$plaintext_cite2[i],collapse = "\n\n")
+      cat("variable = ",cites_df$variable[i], collapse = "\n")
+      cat("first cite = ",cites_df$plaintext_cite[i], collapse = "\n\n")
+      cat("second cite (might not be applicable) = ", cites_df$plaintext_cite2[i], collapse = "\n\n")
     }
     # cat(paste(cites_df$variable," = ",cites_df$plaintext_cite,collapse = "\n\n"))
   }
 
   if(write_out == TRUE){
+    cat("Note that some citations might be missing. Please ensure you match the variables you use to the correct citation.")
     if(format == "bib"){
       readr::write_lines(x = cites_vecbib, path = file_path, sep = "\n\n")
     }
     if(format == "csv"){
-      # note: make sure file_path ends in .csv later
+      if(!endsWith(tolower(file_path), ".csv")){
+        warning("You specified a .csv file but the provided filepath does not end with '.csv'")
+      }
       readr::write_csv(x = cites_df, file_path)
     }
     if(format == "txt"){
-      # note: make sure file_path ends in .txt later
+      if(!endsWith(tolower(file_path), ".txt")){
+        warning("You specified a .txt file but the provided filepath does not end with '.txt'")
+      }
       readr::write_lines(x = cites_vec, path = file_path, sep = "\n\n")
     }
   }
