@@ -106,27 +106,38 @@ get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "
   cites_df <- cites_df[,c("variable","plaintext_cite","bibtex_cite","plaintext_cite2","bibtex_cite2","plaintext_cite3",
                           "bibtex_cite3","years","short_desc","long_desc","sources","category")]
 
-  cites_vec1 <- as.vector(cites_df$plaintext_cite)
-  cites_vec2 <- as.vector(cites_df$plaintext_cite2)
-  cites_vec  <- c(cites_vec1,cites_vec2)
-  cites_vec  <- cites_vec[!is.na(cites_vec)]
+  get_citevec <- function(cites_col1,cites_col2){
+    cites_vec1 <- as.vector(cites_col1)
+    cites_vec2 <- as.vector(cites_col2)
+    cites_vec  <- c(cites_vec1,cites_vec2)
+    cites_vec  <- cites_vec[!is.na(cites_vec)]
+  }
+
+  cites_vec <- get_citevec(cites_df$plaintext_cite, cites_df$plaintext_cite2)
+  cites_vecbib <- get_citevec(cites_df$bibtex_cite, cites_df$bibtex_cite2)
 
   if(print_cites == TRUE){
-    # cat("Note some variables ")
     # cat(paste(cites_vec,collapse = "\n\n"))
-    cat(paste(cites_df$variable," = ",cites_df$plaintext_cite,collapse = "\n\n"))
+    # cat(paste(cites_df$variable," = ",cites_df$plaintext_cite,collapse = "\n\n"))
+    for(i in 1:nrow(cites_df)){
+      cat("----------\n")
+      cat("variable = ",cites_df$variable[i],collapse = "\n")
+      cat("first cite = ",cites_df$plaintext_cite[i],collapse = "\n\n")
+      cat("second cite (might not be applicable) = ",cites_df$plaintext_cite2[i],collapse = "\n\n")
+    }
+    # cat(paste(cites_df$variable," = ",cites_df$plaintext_cite,collapse = "\n\n"))
   }
 
   if(write_out == TRUE){
     if(format == "bib"){
-      readr::write_lines(x = cites_vec, path = file_path, sep = "\n\n")
+      readr::write_lines(x = cites_vecbib, path = file_path, sep = "\n\n")
     }
     if(format == "csv"){
-      # make sure file_path ends in .csv
+      # note: make sure file_path ends in .csv later
       readr::write_csv(x = cites_df, file_path)
     }
     if(format == "txt"){
-      # make sure file_path ends in .txt
+      # note: make sure file_path ends in .txt later
       readr::write_lines(x = cites_vec, path = file_path, sep = "\n\n")
     }
   }
