@@ -187,7 +187,6 @@ If you set `drop_NA_states` to TRUE, and pass the function a dataframe containin
 ```{r fig.width=4, dpi = 140, message=FALSE}
 library(dplyr)
 
-
 generate_map(get_cspp_data(var_category = "demographics") %>%
                 dplyr::filter(st.abb %in% c("NC", "VA", "SC")),
               var_name = "pctpopover65",

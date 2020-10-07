@@ -75,22 +75,10 @@ get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "
 
   # Add package and dataset cite to the cite list
   dataset_cite <- c("Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).")
-  dataset_bib  <- c("@misc{cspp_data,
-                      title = {The Correlates of State Policy Project v.2.2},
-                      author = {Marty P. Jordan and Matt Grossmann},
-                      year = {2020},
-                      howpublished= {http://ippsr.msu.edu/public-policy/correlates-state-policy},
-                      note = {East Lansing, MI: Institute for Public Policy and Social Research (IPPSR)}
-                    }")
+  dataset_bib  <- c("@misc{cspp_data, title = {The Correlates of State Policy Project v.2.2}, author = {Marty P. Jordan and Matt Grossmann}, year = {2020}, howpublished= {http://ippsr.msu.edu/public-policy/correlates-state-policy}, note = {East Lansing, MI: Institute for Public Policy and Social Research (IPPSR)}}")
 
   package_cite <- c("Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data. R package version 0.1.0.")
-  package_bib  <- c("@Manual{cspp_package,
-                      title = {cspp: A Package for The Correlates of State Policy Project Data},
-                      author = {Caleb Lucas and Josh McCrain},
-                      year = {2020},
-                      note = {R package version 0.1.0},
-                      url = {http://ippsr.msu.edu/public-policy/correlates-state-policy}
-                    }")
+  package_bib  <- c("@Manual{cspp_package, title = {cspp: A Package for The Correlates of State Policy Project Data}, author = {Caleb Lucas and Josh McCrain}, year = {2020}, note = {R package version 0.1.0}, url = {http://ippsr.msu.edu/public-policy/correlates-state-policy}}")
 
   cites_df <- codebook %>%
     dplyr::filter(.data$variable %in% var_names) %>%
