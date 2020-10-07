@@ -257,6 +257,10 @@ head(cspp_data %>% arrange(st.abb))
 
 ```
  
+# Citation
+
+> Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data.
+R package version 0.1.0.
 
 # Contact
 
