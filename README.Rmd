@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 ## The Correlates of State Policy
 
-[The Correlates of State Policy Project](http://ippsr.msu.edu/public-policy/correlates-state-policy) compiles more than 900 variables across 50 states from 1900-2016. The variables cover 16 broad categories:
+[The Correlates of State Policy Project](http://ippsr.msu.edu/public-policy/correlates-state-policy) compiles more than 2,000 variables across 50 states (+ DC) from 1900-2016. The variables cover 16 broad categories:
 
 * Demographics and Population
 * Economic and Fiscal Policy
