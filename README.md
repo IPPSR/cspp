@@ -7,6 +7,7 @@
 
 [![Build
 Status](https://travis-ci.com/correlatesstatepolicy/cspp.svg?branch=master)](https://travis-ci.org/correlatesstatepolicy/cspp)
+[![HitCount](http://hits.dwyl.com/correlatesstatepolicy/cspp.svg)](http://hits.dwyl.com/correlatesstatepolicy/cspp)
 <!-- badges: end -->
 
 **cspp** is a package designed to allow a user with only basic knowledge
