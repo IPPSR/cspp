@@ -66,8 +66,10 @@
 plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors = c("#b3a4a4", "#8f3838", "#dbdbdb"), plot_type = "grid") {
 
   if(is.null(cspp_data)) {
-    cspp_data <- get_cspp_data(vars = c("labor_right_to_work"),
-                                                      years = seq(1976, 2015))
+    no_arg_var <- "labor_right_to_work"
+    message(paste0("No data provided, using ",no_arg_var,". Supply data with the cspp_data argument.ß"))
+    cspp_data <- get_cspp_data(vars = no_arg_var,
+                               years = seq(1976, 2015))
   }
 
   # check initial dataframe
@@ -86,7 +88,6 @@ plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors =
     if(!(var_name %in% names(cspp_data)) | var_name %in% c("year", "st.abb", "state", "state_fips", "state_icpsr", "stateno")) {
       stop("Variable name(s) must be in the dataset passed to this function.")
     }
-
 
     cspp_data <- dplyr::select(cspp_data, st.abb, year, plot_var = tidyselect::all_of(var_name))
 
@@ -141,7 +142,6 @@ plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors =
     stop("Dataframe has length 0.")
   }
 
-
   if(plot_type == "grid") {
 
     p <- ggplot2::ggplot(plot_data, aes(year, st.abb, fill = plot_var)) +
@@ -154,7 +154,6 @@ plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors =
 
     message(paste("Values from", var_name, "used to fill cells.", sep = " "))
 
-
   } else {
 
     p <- ggplot2::ggplot(plot_data, aes(x = year, y = plot_var, color = st.abb)) +
@@ -166,7 +165,6 @@ plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors =
   }
 
   return(p)
-
 
 }
 
