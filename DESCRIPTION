@@ -1,14 +1,14 @@
 Package: cspp
 Type: Package
-Title: cspp: A Package for The Correlates of State Policy Project Data
-Version: 0.1.0
+Title: The Correlates of State Policy Project Data
+Version: 0.2.0
 Author: Caleb Lucas (https://caleblucas.com/) and Joshua McCrain (http://joshuamccrain.com/)
 Maintainer: Josh McCrain <josh.mccrain@gmail.com>
-Description: This package is designed to allow a user with only basic knowledge of R to work with the Correlates of State Policy Project data, a dataset of state politics and policy with over 900 variables and over 100 years worth of data. 
-    This package creates and exports datasets from CSPP variables, subsets the datasets by states and years, creates map visualizations, and exports citations to common file formats.
+Description: The cspp package is designed to allow a user with only basic knowledge of R to work with the Correlates of State Policy Project data, a dataset of state politics and policy with over 2000 variables and over 100 years worth of data. This package creates and exports datasets from the Correlates of State Policy Project variables, subsets the datasets by states and years, creates map visualizations, and exports citations to common file formats. See Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Language: en-US
 Depends: 
     R (>= 2.10)
 Imports:

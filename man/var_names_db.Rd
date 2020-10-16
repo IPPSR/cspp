@@ -5,7 +5,7 @@
 \alias{var_names_db}
 \title{var_names_db}
 \format{
-An object of class \code{data.frame} with 2179 rows and 2 columns.
+An object of class \code{data.frame} with 2179 rows and 3 columns.
 }
 \usage{
 var_names_db
