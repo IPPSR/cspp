@@ -105,9 +105,9 @@ var_cats <- get_var_info(categories = c("gun control", "labor"))
 
 You can then use the variable column in this dataframe to pull data from `get_cspp_data` through `var_cats$variable`, an example of which is below.
 
-Another option in finding a variable is to load the variables into a dataframe and use RStudio's filter feature to search:
+Another option in finding a variable is to load the variables into a dataframe and use RStudio's filter feature to search.
 
-![RStudio Filter](../img/filter.png)
+![RStudio Filter](../vignettes/README-filter.png)
 
 ## Pulling data
 
@@ -120,7 +120,7 @@ The function `get_cspp_data` takes the following parameters, all of which are op
 * `output` - Choose to write the resulting dataframe straight to a file. Optional outputs include `csv`, `dta`, or `rdata`.
 * `path` - If outputting the file, choose where to write it to. If left blank, the file will save to your working directory.
 
-In this example, the resulting dataframe includes the variables `c("sess_length", "hou_majority", "term_length")` as well as all variables in the category `demographics` for North Carolina, Virgina, and Georgia from 1994 to 2004.
+In this example, the resulting dataframe includes the variables `c("sess_length", "hou_majority", "term_length")` as well as all variables in the category `demographics` for North Carolina, Virginia, and Georgia from 1994 to 2004.
 
 ```{r eval = F}
 # Get subsetted data and save to dataframe

@@ -118,7 +118,7 @@ You can then use the variable column in this dataframe to pull data from `get_cs
 
 Another option in finding a variable is to load the variables into a dataframe and use RStudio's filter feature to search:
 
-![RStudio Filter](img/filter.png)
+![RStudio Filter](man/figures/README-filter.png)
 
 ## Pulling data
 

@@ -196,7 +196,7 @@ below.
 Another option in finding a variable is to load the variables into a
 dataframe and use RStudio’s filter feature to search:
 
-![RStudio Filter](img/filter.png)
+![RStudio Filter](man/figures/README-filter.png)
 
 ## Pulling data
 
@@ -592,7 +592,7 @@ head(cspp_data %>% arrange(st.abb))
 # Citation
 
 > Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The
-> Correlates of State Policy Project Data. R package version 0.1.0.
+> Correlates of State Policy Project Data. R package version 0.2.1.
 
 # Contact
 
