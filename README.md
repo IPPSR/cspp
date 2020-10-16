@@ -15,6 +15,12 @@ datasets from these variables, subset the datasets by states and years,
 create map visualizations, and export citations to common file formats
 (e.g., `.bib`).
 
+## Updates:
+
+  - **Version 0.2.1** – Added the `plot_panel` function which
+    facilitates the creation of timeseries plots, similar to
+    [panelView](http://yiqingxu.org/software/panelView/panelView.html).
+
 ## The Correlates of State Policy
 
 [The Correlates of State Policy
@@ -121,20 +127,22 @@ and `femal` within the variable name, returning 31 variables:
 ``` r
 # Search for variables by name
 get_var_info(var_names = c("pop","femal"))
-#> # A tibble: 31 x 6
-#>    variable  years   short_desc      long_desc          sources         category
-#>    <chr>     <chr>   <chr>           <chr>              <chr>           <chr>   
-#>  1 poptotal  1900-2~ Population tot~ Total population ~ "U.S. Census B~ demogra~
-#>  2 popdensi~ 1975-1~ Population den~ Number of people ~ "http://www.ip~ demogra~
-#>  3 popfemale 1994-2~ Female populat~ The number of res~ "CQ Press. 'St~ demogra~
-#>  4 pctpopfe~ 2012-2~ Female populat~ Percentage of the~ "U.S. Census B~ demogra~
-#>  5 popmale   1994-2~ Male population The number of res~ "CQ Press. 'St~ demogra~
-#>  6 pctpopma~ 2012-2~ Male populatio~ Percentage of the~ "U.S. Census B~ demogra~
-#>  7 popunder5 1994-2~ Population und~ The number of res~ "CQ Press. 'St~ demogra~
-#>  8 pctpopun~ 2013-2~ Population und~ Percentage of the~ "U.S. Census B~ demogra~
-#>  9 pop5to17  1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
-#> 10 pop18to24 1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
-#> # ... with 21 more rows
+#> # A tibble: 31 x 12
+#>    variable years short_desc long_desc sources category plaintext_cite
+#>    <chr>    <chr> <chr>      <chr>     <chr>   <chr>    <chr>         
+#>  1 poptotal 1900~ Populatio~ Total po~ "U.S. ~ demogra~ <NA>          
+#>  2 popdens~ 1975~ Populatio~ Number o~ "http:~ demogra~ Ryu, Seung-Hy~
+#>  3 popfema~ 1994~ Female po~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#>  4 pctpopf~ 2012~ Female po~ Percenta~ "U.S. ~ demogra~ Hamilton, Gre~
+#>  5 popmale  1994~ Male popu~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#>  6 pctpopm~ 2012~ Male popu~ Percenta~ "U.S. ~ demogra~ Hamilton, Gre~
+#>  7 popunde~ 1994~ Populatio~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#>  8 pctpopu~ 2013~ Populatio~ Percenta~ "U.S. ~ demogra~ Hamilton, Gre~
+#>  9 pop5to17 1994~ Populatio~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#> 10 pop18to~ 1994~ Populatio~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#> # ... with 21 more rows, and 5 more variables: bibtex_cite <chr>,
+#> #   plaintext_cite2 <chr>, bibtex_cite2 <chr>, plaintext_cite3 <chr>,
+#> #   bibtex_cite3 <chr>
 ```
 
 A similar line of code using the `related_to` parameter, instead of
@@ -144,20 +152,22 @@ returning 96 results:
 ``` r
 # Search by name and description:
 get_var_info(related_to = c("pop", "femal"))
-#> # A tibble: 96 x 6
-#>    variable  years   short_desc      long_desc          sources         category
-#>    <chr>     <chr>   <chr>           <chr>              <chr>           <chr>   
-#>  1 poptotal  1900-2~ Population tot~ Total population ~ "U.S. Census B~ demogra~
-#>  2 popdensi~ 1975-1~ Population den~ Number of people ~ "http://www.ip~ demogra~
-#>  3 popfemale 1994-2~ Female populat~ The number of res~ "CQ Press. 'St~ demogra~
-#>  4 pctpopfe~ 2012-2~ Female populat~ Percentage of the~ "U.S. Census B~ demogra~
-#>  5 popmale   1994-2~ Male population The number of res~ "CQ Press. 'St~ demogra~
-#>  6 pctpopma~ 2012-2~ Male populatio~ Percentage of the~ "U.S. Census B~ demogra~
-#>  7 popunder5 1994-2~ Population und~ The number of res~ "CQ Press. 'St~ demogra~
-#>  8 pctpopun~ 2013-2~ Population und~ Percentage of the~ "U.S. Census B~ demogra~
-#>  9 pop5to17  1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
-#> 10 pop18to24 1994-2~ Population fro~ The number of res~ "CQ Press. 'St~ demogra~
-#> # ... with 86 more rows
+#> # A tibble: 96 x 12
+#>    variable years short_desc long_desc sources category plaintext_cite
+#>    <chr>    <chr> <chr>      <chr>     <chr>   <chr>    <chr>         
+#>  1 poptotal 1900~ Populatio~ Total po~ "U.S. ~ demogra~ <NA>          
+#>  2 popdens~ 1975~ Populatio~ Number o~ "http:~ demogra~ Ryu, Seung-Hy~
+#>  3 popfema~ 1994~ Female po~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#>  4 pctpopf~ 2012~ Female po~ Percenta~ "U.S. ~ demogra~ Hamilton, Gre~
+#>  5 popmale  1994~ Male popu~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#>  6 pctpopm~ 2012~ Male popu~ Percenta~ "U.S. ~ demogra~ Hamilton, Gre~
+#>  7 popunde~ 1994~ Populatio~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#>  8 pctpopu~ 2013~ Populatio~ Percenta~ "U.S. ~ demogra~ Hamilton, Gre~
+#>  9 pop5to17 1994~ Populatio~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#> 10 pop18to~ 1994~ Populatio~ The numb~ "CQ Pr~ demogra~ Morgan, K.O.L~
+#> # ... with 86 more rows, and 5 more variables: bibtex_cite <chr>,
+#> #   plaintext_cite2 <chr>, bibtex_cite2 <chr>, plaintext_cite3 <chr>,
+#> #   bibtex_cite3 <chr>
 ```
 
 You can also return whole categories of variables. The full list of
@@ -250,27 +260,77 @@ of citations.
 ``` r
 # Simple dataframe for one variable
 get_cites(var_names = "poptotal")
-#>       var_name
-#> 1         cspp
-#> 2 CSPP Dataset
-#> 3     poptotal
-#>                                                                                                                                                                                                                                                                                                                                        citation
+#>       variable
+#> 1     poptotal
+#> 2 cspp_dataset
+#> 3 cspp_package
+#>                                                                                                                                                        plaintext_cite
+#> 1                                                                                                                                                                <NA>
+#> 2 Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).
+#> 3                                    Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data. R package version 0.1.0.
+#>                                                                                                                                                                                                                                                                                              bibtex_cite
+#> 1                                                                                                                                                                                                                                                                                                   <NA>
+#> 2 @misc{cspp_data, title = {The Correlates of State Policy Project v.2.2}, author = {Marty P. Jordan and Matt Grossmann}, year = {2020}, howpublished= {http://ippsr.msu.edu/public-policy/correlates-state-policy}, note = {East Lansing, MI: Institute for Public Policy and Social Research (IPPSR)}}
+#> 3                                         @Manual{cspp_package, title = {cspp: A Package for The Correlates of State Policy Project Data}, author = {Caleb Lucas and Josh McCrain}, year = {2020}, note = {R package version 0.1.0}, url = {http://ippsr.msu.edu/public-policy/correlates-state-policy}}
+#>   plaintext_cite2 bibtex_cite2 plaintext_cite3 bibtex_cite3               years
+#> 1            <NA>         <NA>            <NA>         <NA> 1900-2008,2012-2017
+#> 2            <NA>         <NA>            <NA>         <NA>                <NA>
+#> 3            <NA>         <NA>            <NA>         <NA>                <NA>
+#>         short_desc                  long_desc
+#> 1 Population total Total population per state
+#> 2             <NA>                       <NA>
+#> 3             <NA>                       <NA>
+#>                                                                                                                                                                                                                                                                                                                                         sources
 #> 1 U.S. Census Bureau (http://www.census.gov/)\r\nOriginally provided by Stateminder: A data visualization project from Georgetown University. http://stateminder.org/ (no longer accessible online)\r\nFor 2012–2017: U.S. Census Bureau, American Fact Finder: https://www.census.gov/acs/www/data/data-tables-and-tools/american- factfinder/
-#> 2                                                                                                                                                                                                         Caleb Lucas and Joshua McCrain (2020). cspp: cspp: A Packge for The Correlates of State Policy Project Data. R package version 0.1.0.
-#> 3                                                                                                                                                                           Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).
+#> 2                                                                                                                                                                                                                                                                                                                                          <NA>
+#> 3                                                                                                                                                                                                                                                                                                                                          <NA>
+#>       category
+#> 1 demographics
+#> 2         <NA>
+#> 3         <NA>
 
 # Using get_var_info to return variable citations
 get_cites(var_names = get_var_info(related_to = "concealed carry")$variable)
-#>       var_name
-#> 1         cspp
-#> 2 CSPP Dataset
-#> 3       bjourn
-#> 4       bprecc
-#>                                                                                                                                                              citation
+#>       variable
+#> 1       bjourn
+#> 2       bprecc
+#> 3 cspp_dataset
+#> 4 cspp_package
+#>                                                                                                                                                        plaintext_cite
+#> 1                                                                                                                                                                <NA>
+#> 2                                                                                                                                                                <NA>
+#> 3 Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).
+#> 4                                    Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data. R package version 0.1.0.
+#>                                                                                                                                                                                                                                                                                              bibtex_cite
+#> 1                                                                                                                                                                                                                                                                                                   <NA>
+#> 2                                                                                                                                                                                                                                                                                                   <NA>
+#> 3 @misc{cspp_data, title = {The Correlates of State Policy Project v.2.2}, author = {Marty P. Jordan and Matt Grossmann}, year = {2020}, howpublished= {http://ippsr.msu.edu/public-policy/correlates-state-policy}, note = {East Lansing, MI: Institute for Public Policy and Social Research (IPPSR)}}
+#> 4                                         @Manual{cspp_package, title = {cspp: A Package for The Correlates of State Policy Project Data}, author = {Caleb Lucas and Josh McCrain}, year = {2020}, note = {R package version 0.1.0}, url = {http://ippsr.msu.edu/public-policy/correlates-state-policy}}
+#>   plaintext_cite2 bibtex_cite2 plaintext_cite3 bibtex_cite3     years
+#> 1            <NA>         <NA>            <NA>         <NA> 1986-2016
+#> 2            <NA>         <NA>            <NA>         <NA> 1986-2016
+#> 3            <NA>         <NA>            <NA>         <NA>      <NA>
+#> 4            <NA>         <NA>            <NA>         <NA>      <NA>
+#>                                             short_desc
+#> 1                              Carry in motor vehicles
+#> 2 State preemption of local concealed carry ordinances
+#> 3                                                 <NA>
+#> 4                                                 <NA>
+#>                                                                                                                                                                                                                                                                                                                                  long_desc
+#> 1 Carry in motor vehicles (peaceable journey) (0 = not permitted unless locked in container, 0.5 = permitted with CC permit/license but only if in plain view, 1 = only with concealed carry permit (unless in locked container or glove box), 2 = either 'plain view' or 'concealed' restrictions, 3 = no restrictions even if concealed)
+#> 2                                                                                                                                                                                                     State preemption of local concealed carry ordinances? (0 = no, 0.5 = limited/special legislation for particular localities, 1 = yes)
+#> 3                                                                                                                                                                                                                                                                                                                                     <NA>
+#> 4                                                                                                                                                                                                                                                                                                                                     <NA>
+#>                                                                                                                                                               sources
 #> 1 Sorens, Jason, Fait Muedini, and William P. Ruger. 'State and Local Public Policies in 2006: A New Database.' State Politics & Policy Quarterly 8.3 (2008): 309–26.
 #> 2 Sorens, Jason, Fait Muedini, and William P. Ruger. 'State and Local Public Policies in 2006: A New Database.' State Politics & Policy Quarterly 8.3 (2008): 309–26.
-#> 3                               Caleb Lucas and Joshua McCrain (2020). cspp: cspp: A Packge for The Correlates of State Policy Project Data. R package version 0.1.0.
-#> 4 Jordan, Marty P. and Matt Grossmann. 2020. The Correlates of State Policy Project v.2.2. East Lansing, MI: Institute for Public Policy and Social Research (IPPSR).
+#> 3                                                                                                                                                                <NA>
+#> 4                                                                                                                                                                <NA>
+#>      category
+#> 1 gun control
+#> 2 gun control
+#> 3        <NA>
+#> 4        <NA>
 ```
 
 There is also an option to output the citations to a .bib, .csv or .txt
@@ -358,6 +418,68 @@ generate_map(get_cspp_data(var_category = "demographics") %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="60%" />
+
+## Plot timeseries data
+
+To facilitate the visualization of the timeseries and panel nature of
+the CSPP data, the `plot_panel` function takes a dataframe from
+`get_cspp_data` and plots a state-year panel in one of two formats. The
+parameters of this function are as follows:
+
+  - `cspp_data` - a dataframe generated by `get_cspp_data` or,
+    alternatively, a dataframe with the columns `st.abb`, `year`, plus
+    one other variable.
+  - `var_name` - the name of the variable to be plotted.
+  - `years` - the years to include in the panel.
+  - `colors` - three color values that are used in the plot. The first
+    color takes the lowest values of the variable, the second the
+    highest, and the third is the color used for NA values.
+  - `plot_type` - one of “grid” or “line”. Defaults to “grid”. Both are
+    displayed next.
+
+The function returns a `ggplot2` object, making it easier to change and
+add layers onto the generated plot.
+
+A common research design is to use variation in policy adoption as a
+‘treatment’ in a pseudo-experimental setting. This function makes it
+easy to visualize when states are subject to this treatment.
+
+``` r
+# panel of all states' adoption of medical marijuana laws
+cspp <- get_cspp_data(vars = "drugs_medical_marijuana")
+
+# visualize panel:
+plot_panel(cspp)
+#> Values from drugs_medical_marijuana used to fill cells.
+```
+
+<img src="man/figures/README-unnamed-chunk-17-1.png" width="100%" />
+
+The function also works with continuous variables, such as the state
+policy liberalism score:
+
+``` r
+plot_panel(cspp_data = get_cspp_data(vars = "pollib_median"),
+           colors = c("firebrick4", "steelblue2", "gray"),
+           years = seq(1960, 2010)) +
+  ggtitle("Policy liberalism")
+#> Values from pollib_median used to fill cells.
+```
+
+<img src="man/figures/README-unnamed-chunk-18-1.png" width="100%" />
+
+Finally, the function has the option to produce state-year line graphs.
+This will work with any variable, but is best when used with a
+continuous variable.
+
+``` r
+plot_panel(cspp_data = get_cspp_data(vars = "pollib_median"),
+           years = seq(1960, 2010),
+           plot_type = "line")
+#> Warning: Removed 51 row(s) containing missing values (geom_path).
+```
+
+<img src="man/figures/README-unnamed-chunk-19-1.png" width="100%" />
 
 ## Network data
 
