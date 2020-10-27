@@ -27,7 +27,7 @@
 #'   \code{\link[ggplot2]{scale_fill_gradient}}.
 #' @param plot_type One of either `grid` or `line`. Default value is `grid`.
 #'
-#' @see also \code{\link{get_cspp_data}}
+#' @seealso \code{\link{get_var_info}}, \code{\link{get_cites}}, \code{\link{generate_map}}
 #'
 #' @return ggplot2 object
 #'
@@ -40,9 +40,8 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #'
-#' # dichotomous variable:
+#' # dichotomous variable
 #' cspp <- get_cspp_data(vars = c("drugs_medical_marijuana"))
 #' plot_panel(cspp)
 #'
@@ -55,19 +54,18 @@
 #'
 #' plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee"))
 #'
-#' # add ggplot2 features:
+#' # add ggplot2 features
+#' library(ggplot)
 #' plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee")) +
 #'   theme(legend.position = "none") +
 #'   ggtitle("Continuous variable")
-#'
-#' }
 
 
 plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors = c("#b3a4a4", "#8f3838", "#dbdbdb"), plot_type = "grid") {
 
   if(is.null(cspp_data)) {
     no_arg_var <- "labor_right_to_work"
-    message(paste0("No data provided, using ",no_arg_var,". Supply data with the cspp_data argument.ß"))
+    message(paste0("No data provided, using ",no_arg_var,"."))
     cspp_data <- get_cspp_data(vars = no_arg_var,
                                years = seq(1976, 2015))
   }

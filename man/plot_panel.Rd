@@ -48,9 +48,8 @@ This function will take any dataframe consisting of the variables `year` and
 `st.abb` plus one other variable.
 }
 \examples{
-\dontrun{
 
-# dichotomous variable:
+# dichotomous variable
 cspp <- get_cspp_data(vars = c("drugs_medical_marijuana"))
 plot_panel(cspp)
 
@@ -63,12 +62,11 @@ continuous_data <- get_cspp_data(vars = c("h_diffs"))
 
 plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee"))
 
-# add ggplot2 features:
+# add ggplot2 features
+library(ggplot)
 plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee")) +
   theme(legend.position = "none") +
   ggtitle("Continuous variable")
-
-}
 }
 \seealso{
 \code{\link{get_var_info}}, \code{\link{get_cites}}, \code{\link{generate_map}}
