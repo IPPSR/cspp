@@ -3,7 +3,7 @@
 \docType{data}
 \name{correlates}
 \alias{correlates}
-\title{correlates}
+\title{The Correlates of State Policy Project Dataset}
 \format{
 An object of class \code{data.frame} with 6120 rows and 2091 columns.
 }
@@ -16,7 +16,7 @@ correlates
 \details{
 @usage data(correlates)
 
- @format A data frame of n rows and n variables. Each observation is ...
+ @format The Correlates of State Policy Project dataset. A data frame of 6120 rows and 2091 variables. Each observation is a state-year.
 
  @keywords datasets
 }

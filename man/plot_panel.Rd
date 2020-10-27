@@ -70,3 +70,6 @@ plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee")) +
 
 }
 }
+\seealso{
+\code{\link{get_var_info}}, \code{\link{get_cites}}, \code{\link{generate_map}}
+}

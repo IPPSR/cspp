@@ -3,7 +3,7 @@
 \docType{data}
 \name{codebook}
 \alias{codebook}
-\title{Codebook for CPSS data}
+\title{The Correlates of State Policy Project Dataset Codebook}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 2090 rows and 12 columns.
 }
@@ -16,7 +16,7 @@ codebook
 \details{
 @usage data(codebook)
 
- @format A data frame of n rows and n variables. Each observation is ...
+ @format The Correlates of State Policy Project dataset codebook. Each observation is a variable in the CSPP dataset. There are 2090 rows and 12 columns. The columns contain information regarding each variable, such as its source, citation, and a short & long description.
 
  @keywords datasets
 }
