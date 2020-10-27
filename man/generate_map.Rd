@@ -53,7 +53,7 @@ state name as a string, and the final column the value to be plotted, will
 work with this function.
 }
 \examples{
-\dontrun{
+
 ## default map with total population
 generate_map()
 
@@ -73,6 +73,7 @@ generate_map(get_cspp_data(var_category = "demographics"),
 
 ## plot specific states
 # drop_NA_states set to TRUE plots only those states
+library(dplyr)
 generate_map(get_cspp_data(var_category = "demographics") \%>\%
                dplyr::filter(st.abb \%in\% c("NC", "VA", "SC")),
              var_name = "pctpopover65",
@@ -84,13 +85,15 @@ generate_map(get_cspp_data(var_category = "demographics") \%>\%
 
  ## pass specific variables and years
  # returns average over set of years provided
+ library(dplyr)
  generate_map(get_cspp_data(var_category = "demographics") \%>\%
    dplyr::filter(year \%in\% seq(2001, 2010)))
 
  # returns average over set of years provided
+ library(dplyr)
  generate_map(get_cspp_data(var_category = "demographics") \%>\%
    dplyr::filter(year \%in\% seq(2001, 2010)))
-}
+
 }
 \seealso{
 \code{\link{get_cspp_data}}, \code{\link{get_cites}}, \code{\link{get_var_info}}

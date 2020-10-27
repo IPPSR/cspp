@@ -41,7 +41,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{
+#'
 #' ## returns full dataset
 #' data <- get_cspp_data()
 #'
@@ -55,7 +55,7 @@
 #'                       var_category = "demographics",
 #'                       states = c("NC", "VA", "GA"),
 #'                       years = seq(1995, 2004))
-#'}
+#'
 #'
 
 get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years = NULL, output = NULL, path = ""){

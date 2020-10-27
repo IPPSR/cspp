@@ -36,7 +36,7 @@
 #' @seealso \code{\link{get_cspp_data}}, \code{\link{get_cites}}, \code{\link{generate_map}}
 #'
 #' @examples
-#'\dontrun{
+#'
 #' # returns all variable information
 #' get_var_info()
 #'
@@ -48,7 +48,7 @@
 #' # returns non-exact matches for variables with "pop" and that have "femal" anywhere in the row
 #' get_var_info(var_names = "pop",
 #'              related_to = "femal")
-#'}
+#'
 #'
 
 get_var_info <- function(var_names = NULL, categories = NULL, related_to = NULL, exact = FALSE){

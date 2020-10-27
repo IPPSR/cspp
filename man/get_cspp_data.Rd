@@ -51,7 +51,7 @@ working directory. Exclude final slash: e.g., \code{path = "dir1/dir2"}}
 CSPP dataset into the R environment as a dataframe.
 }
 \examples{
-\dontrun{
+
 ## returns full dataset
 data <- get_cspp_data()
 
@@ -65,7 +65,7 @@ data <- get_cspp_data(vars = c("sess_length", "hou_majority", "term_length"),
                       var_category = "demographics",
                       states = c("NC", "VA", "GA"),
                       years = seq(1995, 2004))
-}
+
 
 }
 \seealso{

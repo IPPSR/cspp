@@ -43,7 +43,7 @@ Specifying no arguments returns all the information for all the variables
 in the CSPP dataset.
 }
 \examples{
-\dontrun{
+
 # returns all variable information
 get_var_info()
 
@@ -55,7 +55,7 @@ get_var_info(categories = "demographics")
 # returns non-exact matches for variables with "pop" and that have "femal" anywhere in the row
 get_var_info(var_names = "pop",
              related_to = "femal")
-}
+
 
 }
 \seealso{

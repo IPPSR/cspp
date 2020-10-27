@@ -55,7 +55,7 @@
 #' plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee"))
 #'
 #' # add ggplot2 features
-#' library(ggplot)
+#' library(ggplot2)
 #' plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee")) +
 #'   theme(legend.position = "none") +
 #'   ggtitle("Continuous variable")
@@ -154,7 +154,7 @@ plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors =
 
   } else {
 
-    p <- ggplot2::ggplot(plot_data, aes(x = year, y = plot_var, color = st.abb)) +
+    p <- ggplot2::ggplot(plot_data, aes(x = year, y = st.abb, color = plot_var)) +
       ggplot2::geom_line() +
       ggplot2::scale_color_discrete("State") +
       ggplot2::theme_classic() +

@@ -36,9 +36,10 @@
 #' @seealso \code{\link{get_cspp_data}}, \code{\link{get_var_info}}, \code{\link{generate_map}}
 #'
 #' @examples
-#'\dontrun{
+#'
 #' get_cites("poptotal")
 #'
+#'\dontrun{
 #' get_cites(var_names = "poptotal",
 #'           write_out = TRUE,
 #'           file_path = "~/path/to/file.csv",

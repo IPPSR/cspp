@@ -46,9 +46,10 @@ CSPP dataset as a whole. We request you cite both if you use this package
 for your research.
 }
 \examples{
-\dontrun{
+
 get_cites("poptotal")
 
+\dontrun{
 get_cites(var_names = "poptotal",
           write_out = TRUE,
           file_path = "~/path/to/file.csv",
