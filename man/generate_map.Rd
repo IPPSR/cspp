@@ -83,16 +83,16 @@ generate_map(get_cspp_data(var_category = "demographics") \%>\%
  ggplot2::theme(legend.position = "none") +
  ggplot2::ggtitle("\% Population Over 65")
 
- ## pass specific variables and years
- # returns average over set of years provided
- library(dplyr)
- generate_map(get_cspp_data(var_category = "demographics") \%>\%
-   dplyr::filter(year \%in\% seq(2001, 2010)))
+## pass specific variables and years
+# returns average over set of years provided
+library(dplyr)
+generate_map(get_cspp_data(var_category = "demographics") \%>\%
+ dplyr::filter(year \%in\% seq(2001, 2010)))
 
- # returns average over set of years provided
- library(dplyr)
- generate_map(get_cspp_data(var_category = "demographics") \%>\%
-   dplyr::filter(year \%in\% seq(2001, 2010)))
+# returns average over set of years provided
+library(dplyr)
+generate_map(get_cspp_data(var_category = "demographics") \%>\%
+ dplyr::filter(year \%in\% seq(2001, 2010)))
 
 }
 \seealso{
