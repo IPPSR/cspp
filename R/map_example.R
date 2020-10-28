@@ -1,10 +1,10 @@
-#'  map_example
+#'  Sample Dataset for Working with generate_map
 #'
 #'  @docType data
 #'
 #'  @usage data(map_example)
 #'
-#'  @format A data frame of n rows and n variables. Each observation is ...
+#'  @format A dataframe to create a sample map using the generate_map function. The variable plotted is population.
 #'
 #'  @keywords datasets
 
