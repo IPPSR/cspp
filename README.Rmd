@@ -24,7 +24,7 @@ library("badger")
 ```{r, echo = FALSE, results='asis'}
 cat(
 	badge_cran_release("cspp", "blue")
-	# ,badge_cran_download("cspp", "grand-total", "blue")
+	,badge_cran_download("cspp", "grand-total", "blue")
 )
 ```
 <!-- badges: end -->
