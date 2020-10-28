@@ -8,8 +8,7 @@ plot_panel(
   cspp_data = NULL,
   var_name = NULL,
   years = NULL,
-  colors = c("#b3a4a4", "#8f3838", "#dbdbdb"),
-  plot_type = "grid"
+  colors = c("#b3a4a4", "#8f3838", "#dbdbdb")
 )
 }
 \arguments{
@@ -32,8 +31,6 @@ is the treated value. The third color is the value for NA. If plotting a
 continuous variable, the first color is the low end of the gradient and the
 second value is the high end of the gradient. See
 \code{\link[ggplot2]{scale_fill_gradient}}.}
-
-\item{plot_type}{One of either `grid` or `line`. Default value is `grid`.}
 }
 \value{
 ggplot2 object
@@ -66,7 +63,7 @@ plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee"))
 library(ggplot2)
 plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee")) +
   theme(legend.position = "none") +
-  ggtitle("Continuous variable")
+  ggplot2::ggtitle("Continuous variable")
 }
 \seealso{
 \code{\link{get_var_info}}, \code{\link{get_cites}}, \code{\link{generate_map}}

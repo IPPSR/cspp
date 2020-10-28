@@ -25,7 +25,6 @@
 #'   continuous variable, the first color is the low end of the gradient and the
 #'   second value is the high end of the gradient. See
 #'   \code{\link[ggplot2]{scale_fill_gradient}}.
-#' @param plot_type One of either `grid` or `line`. Default value is `grid`.
 #'
 #' @seealso \code{\link{get_var_info}}, \code{\link{get_cites}}, \code{\link{generate_map}}
 #'
@@ -58,10 +57,10 @@
 #' library(ggplot2)
 #' plot_panel(continuous_data, colors = c("white", "dodgerblue", "#eeeeee")) +
 #'   theme(legend.position = "none") +
-#'   ggtitle("Continuous variable")
+#'   ggplot2::ggtitle("Continuous variable")
 
 
-plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors = c("#b3a4a4", "#8f3838", "#dbdbdb"), plot_type = "grid") {
+plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors = c("#b3a4a4", "#8f3838", "#dbdbdb")) {
 
   if(is.null(cspp_data)) {
     no_arg_var <- "labor_right_to_work"
@@ -140,27 +139,15 @@ plot_panel <- function(cspp_data = NULL, var_name = NULL, years = NULL, colors =
     stop("Dataframe has length 0.")
   }
 
-  if(plot_type == "grid") {
+  p <- ggplot2::ggplot(plot_data, aes(year, st.abb, fill = plot_var)) +
+    ggplot2::geom_tile(color="white", size=.1) +
+    type +
+    ggplot2::theme(panel.grid = element_blank(),
+                   axis.ticks = element_blank()) +
+    ggplot2::coord_cartesian(expand=F) +
+    ggplot2::ylab("") + ggplot2::xlab("Year")
 
-    p <- ggplot2::ggplot(plot_data, aes(year, st.abb, fill = plot_var)) +
-      ggplot2::geom_tile(color="white", size=.1) +
-      type +
-      ggplot2::theme(panel.grid = element_blank(),
-                     axis.ticks = element_blank()) +
-      ggplot2::coord_cartesian(expand=F) +
-      ggplot2::ylab("") + ggplot2::xlab("Year")
-
-    message(paste("Values from", var_name, "used to fill cells.", sep = " "))
-
-  } else {
-
-    p <- ggplot2::ggplot(plot_data, aes(x = year, y = st.abb, color = plot_var)) +
-      ggplot2::geom_line() +
-      ggplot2::scale_color_discrete("State") +
-      ggplot2::theme_classic() +
-      ggplot2::ylab(var_name)
-
-  }
+  message(paste("Values from", var_name, "used to fill cells.", sep = " "))
 
   return(p)
 

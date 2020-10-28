@@ -18,7 +18,7 @@ create map visualizations, and export citations to common file formats
 
 ## Updates:
 
-  - **Version 0.2.1** – Added the `plot_panel` function which
+  - **Version 0.3.1** – Added the `plot_panel` function which
     facilitates the creation of timeseries plots, similar to
     [panelView](http://yiqingxu.org/software/panelView/panelView.html).
 
@@ -377,7 +377,7 @@ library(ggplot2) # optional, but needed to remove legend
 # Generates a map of the percentage of the population over 65
 generate_map(get_cspp_data(var_category = "demographics"),
              var_name = "pctpopover65") +
-  theme(legend.position = "none")
+  ggplot2::theme(legend.position = "none")
 ```
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="60%" />
@@ -393,13 +393,12 @@ containing only certain states, it only plots those states:
 ``` r
 library(dplyr)
 
-
 generate_map(get_cspp_data(var_category = "demographics") %>%
                 dplyr::filter(st.abb %in% c("NC", "VA", "SC")),
               var_name = "pctpopover65",
               poly_args = list(color = "black"),
               drop_NA_states = TRUE) +
-  theme(legend.position = "none")
+  ggplot2::theme(legend.position = "none")
 ```
 
 <img src="man/figures/README-unnamed-chunk-17-1.png" width="60%" />
@@ -413,9 +412,9 @@ generate_map(get_cspp_data(var_category = "demographics") %>%
               var_name = "pctpopover65",
               poly_args = list(color = "black"),
               drop_NA_states = TRUE) +
-  scale_fill_gradient(low = "white", high = "red") +
-  theme(legend.position = "none") +
-  ggtitle("% Population Over 65")
+  ggplot2::scale_fill_gradient(low = "white", high = "red") +
+  ggplot2::theme(legend.position = "none") +
+  ggplot2::ggtitle("% Population Over 65")
 ```
 
 <img src="man/figures/README-unnamed-chunk-18-1.png" width="60%" />
@@ -463,24 +462,11 @@ policy liberalism score:
 plot_panel(cspp_data = get_cspp_data(vars = "pollib_median"),
            colors = c("firebrick4", "steelblue2", "gray"),
            years = seq(1960, 2010)) +
-  ggtitle("Policy liberalism")
+  ggplot2::ggtitle("Policy liberalism")
 #> Values from pollib_median used to fill cells.
 ```
 
 <img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
-
-Finally, the function has the option to produce state-year line graphs.
-This will work with any variable, but is best when used with a
-continuous variable.
-
-``` r
-plot_panel(cspp_data = get_cspp_data(vars = "pollib_median"),
-           years = seq(1960, 2010),
-           plot_type = "line")
-#> Warning: Removed 51 row(s) containing missing values (geom_path).
-```
-
-<img src="man/figures/README-unnamed-chunk-21-1.png" width="100%" />
 
 ## Network data
 
@@ -594,7 +580,7 @@ head(cspp_data %>% arrange(st.abb))
 # Citation
 
 > Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The
-> Correlates of State Policy Project Data. R package version 0.2.1.
+> Correlates of State Policy Project Data. R package version 0.3.1.
 
 # Contact
 
