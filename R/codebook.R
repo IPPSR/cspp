@@ -1,5 +1,7 @@
 #'  The Correlates of State Policy Project Dataset Codebook
 #'
+#'  @name codebook
+#'
 #'  @docType data
 #'
 #'  @usage data(codebook)

@@ -1,4 +1,6 @@
-#'  The Correlates of State Policy Project Dataset
+#'  The Correlates of State Policy Project Dataset (IPPSR)
+#'
+#'  @name correlates
 #'
 #'  @docType data
 #'

@@ -1,5 +1,7 @@
 #'  Variables in the State Network (IPPSR) data
 #'
+#'  @name network_vars
+#'
 #'  @docType data
 #'
 #'  @usage data(network_vars)

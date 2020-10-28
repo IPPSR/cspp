@@ -11,12 +11,14 @@ An object of class \code{data.frame} with 118 rows and 2 columns.
 network_vars
 }
 \description{
-@docType data
+@name network_vars
 }
 \details{
-@usage data(network_vars)
+@docType data
 
- @format A data frame of n rows and n variables. Each observation is ...
+ @usage data(network_vars)
+
+ @format A dataset of the the names of the variables in the IPPSR state networks data.
 
  @keywords datasets
 }

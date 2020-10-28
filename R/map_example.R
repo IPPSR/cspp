@@ -1,5 +1,7 @@
 #'  Sample Dataset for Working with generate_map
 #'
+#'  @name map_example
+#'
 #'  @docType data
 #'
 #'  @usage data(map_example)

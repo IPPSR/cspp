@@ -3,7 +3,7 @@
 \docType{data}
 \name{map_example}
 \alias{map_example}
-\title{map_example}
+\title{Sample Dataset for Working with generate_map}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 51 rows and 3 columns.
 }
@@ -11,12 +11,14 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 map_example
 }
 \description{
-@docType data
+@name map_example
 }
 \details{
-@usage data(map_example)
+@docType data
 
- @format A data frame of n rows and n variables. Each observation is ...
+ @usage data(map_example)
+
+ @format A dataframe to create a sample map using the generate_map function. The variable plotted is population.
 
  @keywords datasets
 }
