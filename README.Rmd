@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # cspp: A Package for The Correlates of State Policy Project Data
 
-```{r echo=FALSE, results="hide", message=FALSE}
+```{r echo=FALSE, results="hide", message=FALSE, warning=F}
 library("badger")
 ```
 
@@ -37,7 +37,7 @@ cat(
 
 -- Added the `plot_panel` function which facilitates the creation of timeseries plots, similar to [panelView](http://yiqingxu.org/software/panelView/panelView.html). 
 
--- Added the `core` argument to the `get_cspp_data` function. Set it to `TRUE` to merge in common and important variables from the CSPP data.
+-- Added the `core` argument to the `get_cspp_data` function. Set it to `TRUE` to merge in common and important variables from the CSPP data. Useful for teaching purposes.
 
 ## The Correlates of State Policy
 
@@ -64,8 +64,12 @@ cat(
 ## Basic Use: Finding and Returning State Politics Data
 
 ```{r eval=F}
+# For latest developmental verison:
 library(devtools)
 install_github("correlatesstatepolicy/cspp")
+
+# For CRAN version:
+install.packages("cspp")
 ```
 
 
@@ -108,14 +112,14 @@ Given the large number of variables in the data, we provide additional functiona
 
 ```{r}
 # Search for variables by name
-get_var_info(var_names = c("pop","femal"))
+get_var_info(var_names = c("pop","femal")) %>% tibble::glimpse()
 ```
 
 A similar line of code using the `related_to` parameter, instead of `var_name`, searches within the name **and** the description fields, returning 96 results:
 
 ```{r}
 # Search by name and description:
-get_var_info(related_to = c("pop", "femal"))
+get_var_info(related_to = c("pop", "femal")) %>% tibble::glimpse()
 ```
 
 You can also return whole categories of variables. The full list of variable categories is available within the help file for `?get_cspp_data`. You can alternatively see the list of categories through the below snippet of code.
@@ -176,10 +180,11 @@ This function takes a variable name or vector of variable names (such as that ge
 
 ```{r}
 # Simple dataframe for one variable
-get_cites(var_names = "poptotal")
+get_cites(var_names = "poptotal") %>% tibble::glimpse()
 
 # Using get_var_info to return variable citations
-get_cites(var_names = get_var_info(related_to = "concealed carry")$variable)
+cite_ex <- get_cites(var_names = get_var_info(related_to = "concealed carry")$variable)
+cite_ex$plaintext_cite[3:4]
 ```
 
 There is also an option to output the citations to a .bib, .csv or .txt file:
@@ -276,7 +281,7 @@ The function `get_network_data` returns a dataset from the [CSPP state networks 
 
 ```{r}
 # Returns dataframe of state dyads
-head(get_network_data())
+get_network_data() %>% tibble::glimpse()
 ```
 
 The function has two optional parameters `category` and `merge_data`. If a category or string of categories is specified, it returns variables only in that category (see the data documentation in the link above). Category options are "Distance Travel Migration", "Economic", "Political", "Policy", "Demographic".
@@ -303,6 +308,40 @@ head(cspp_data %>% arrange(st.abb))
 # the merged value of Alaska's hou_majority value will be mean(c(-0.129, -0.115))
 
 ```
+ 
+### Network Plotting Examples
+ 
+ Here are two examples of plotting the state network edgelist data using `igraph` and `ggraph`:
+ 
+```{r message=F, warning=F, dpi=180}
+library(ggraph)
+library(igraph)
+
+network.df <- select(network.df, from = st.abb1, to = st.abb2, ACS_Migration) 
+
+network.df %>% 
+  filter(from %in% c("NC", "VA", "SC", "GA")) %>% 
+  graph_from_data_frame() %>% 
+  ggraph(layout="fr") + 
+  geom_edge_link(aes(edge_alpha = ACS_Migration), edge_color = "royalblue") + 
+  geom_node_point() +
+  geom_node_text(aes(label = name), repel = TRUE, point.padding = unit(0.2, "lines")) +
+  theme_void() +
+  theme(legend.position = "none")
+```
+
+
+```{r message=F, warning=F, dpi=180}
+network.df %>% 
+  filter(from %in% c("NC")) %>% 
+  graph_from_data_frame() %>% 
+  ggraph(layout="linear") + 
+  geom_edge_arc(aes(edge_alpha = ACS_Migration), edge_color = "royalblue") + 
+  geom_node_text(aes(label = name), size = 2) +
+  theme_void() +
+  theme(legend.position = "none")
+```
+ 
  
 # Citation
 
