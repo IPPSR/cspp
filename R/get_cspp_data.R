@@ -309,7 +309,8 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
                           ,"guncontrol_assaultweapon_ban"
                           ,"guncontrol_opencarry"
                           ,"labor_minwage_abovefed"
-                          ,"labor_right_to_work")
+                          ,"labor_right_to_work"
+                          )
 
       core <- correlates[, colnames(correlates) %in% core_data_vars]
       core <- core %>%
@@ -317,7 +318,11 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
 
       return(left_join(data, core,
                        # use 'by' to suppress the dplyr joining message
-                       by =  intersect(colnames(data),colnames(core))))
+                       by =  intersect(colnames(data),
+                                       colnames(core)
+                                       )
+                       )
+             )
     } else {
       return(data)
     }
