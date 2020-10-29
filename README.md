@@ -15,13 +15,21 @@ Status](https://travis-ci.com/correlatesstatepolicy/cspp.svg?branch=master)](htt
 of R to find variables on state politics and policy, create and export
 datasets from these variables, subset the datasets by states and years,
 create map visualizations, and export citations to common file formats
-(e.g., `.bib`).
+(e.g.,
+`.bib`).
 
 ## Updates:
 
-  - **Version 0.3.1** – Added the `plot_panel` function which
-    facilitates the creation of timeseries plots, similar to
-    [panelView](http://yiqingxu.org/software/panelView/panelView.html).
+<!-- * **Version 0.3.1** -- Added the `plot_panel` function which facilitates the creation of timeseries plots, similar to [panelView](http://yiqingxu.org/software/panelView/panelView.html).  -->
+
+**Version 0.3.1**
+
+– Added the `plot_panel` function which facilitates the creation of
+timeseries plots, similar to
+[panelView](http://yiqingxu.org/software/panelView/panelView.html).
+
+– Added the `core` argument to the `get_cspp_data` function. Set it to
+`TRUE` to merge in common and important variables from the CSPP data.
 
 ## The Correlates of State Policy
 
