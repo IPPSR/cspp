@@ -11,14 +11,14 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 codebook
 }
 \description{
-@name codebook
+The codebook for the Correlates of State Policy Project dataset assembled by Marty P. Jordan and Matt Grossmann (2020) <http://ippsr.msu.edu/public-policy/correlates-state-policy>. Each observation is a variable in the CSPP dataset. The columns contain information regarding each variable, such as its source, citation, and a short & long description.
 }
 \details{
-@docType data
+@name codebook
+
+ @docType data
 
  @usage data(codebook)
-
- @format The codebook for the Correlates of State Policy Project dataset assembled by Marty P. Jordan and Matt Grossmann (2020) <http://ippsr.msu.edu/public-policy/correlates-state-policy>. Each observation is a variable in the CSPP dataset. The columns contain information regarding each variable, such as its source, citation, and a short & long description.
 
  @keywords datasets
 }

@@ -11,14 +11,15 @@ An object of class \code{data.frame} with 6120 rows and 2091 columns.
 correlates
 }
 \description{
-@name correlates
+The Correlates of State Policy Project dataset assembled by Marty P. Jordan and Matt Grossmann (2020) <http://ippsr.msu.edu/public-policy/correlates-state-policy>. Each observation is a state-year.
 }
 \details{
-@docType data
+@name correlates
+
+ @docType data
 
  @usage data(correlates)
 
- @format The Correlates of State Policy Project dataset assembled by Marty P. Jordan and Matt Grossmann (2020) <http://ippsr.msu.edu/public-policy/correlates-state-policy>. Each observation is a state-year.
 
  @keywords datasets
 }

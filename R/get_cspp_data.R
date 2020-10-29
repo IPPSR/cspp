@@ -27,6 +27,7 @@
 #'
 #'   Input can be a vector of years (or a singular year), such as c(2000, 2001,
 #'   2002, 2012) or seq(2000, 2012).
+#' @param core Default is FALSE. If TRUE, merge the core CSPP data (approximately 70 common and important variables) with the search result.
 #' @param output Default is NULL. One of "csv", "dta", "rdata". Optional
 #'   parameter for writing the resulting dataframe to a file.
 #' @param path The directory to write the file to. Default is blank, so writes to
@@ -58,7 +59,7 @@
 #'
 #'
 
-get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years = NULL, output = NULL, path = ""){
+get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years = NULL, core = FALSE, output = NULL, path = ""){
 
   data <- correlates %>%
     dplyr::rename(st.abb = st)
@@ -222,8 +223,6 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
 
       }
 
-
-
     }
 
     # check if any of the variables have additional footnotes in the codebook:
@@ -238,9 +237,90 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
               paste(names(data)[names(data) %in% note_vars], collapse = ", "))
     }
 
-    return(data)
+    if(core){
+      core_data_vars <- c("year"
+                          ,"st"
+                          ,"stateno"
+                          ,"state"
+                          ,"state_fips"
+                          ,"state_icpsr"
+                          ,"poptotal"
+                          ,"evangelical_pop"
+                          ,"nonwhite"
+                          ,"gini_coef"
+                          ,"region"
+                          ,"total_expenditure"
+                          ,"total_revenue"
+                          ,"gsppcap"
+                          ,"incomepcap"
+                          ,"unemployment"
+                          ,"povrate"
+                          ,"earned_income_taxcredit"
+                          ,"x_sales_taxes"
+                          ,"x_tax_burden"
+                          ,"x_top_corporateincometaxrate"
+                          ,"prez_election_year"
+                          ,"hou_chamber"
+                          ,"sen_chamber"
+                          ,"h_diffs"
+                          ,"s_diffs"
+                          ,"inst6014_nom"
+                          ,"bowen_legprof_firstdim"
+                          ,"bowen_legprof_seconddim"
+                          ,"speaker_power"
+                          ,"pctfemaleleg"
+                          ,"efna_index"
+                          ,"vepvotingrate"
+                          ,"ranney4_control"
+                          ,"overall_fin_reg"
+                          ,"oelecsc"
+                          ,"opartsc"
+                          ,"nonindiv_contrib"
+                          ,"union_density"
+                          ,"pollib_median"
+                          ,"innovatescore_boehmkeskinner"
+                          ,"soc_capital_ma"
+                          ,"citi6013"
+                          ,"wpid"
+                          ,"mood"
+                          ,"anti_environment"
+                          ,"anti_aid"
+                          ,"anti_defense"
+                          ,"anti_education"
+                          ,"anti_welfare"
+                          ,"anti_race"
+                          ,"death_penalty"
+                          ,"guncontrol_stand_your_ground"
+                          ,"vcrimerate"
+                          ,"z_education_expenditures_per_pup"
+                          ,"mathscore4th"
+                          ,"readscore4th"
+                          ,"sqli"
+                          ,"health_rank"
+                          ,"genderrights_state_eras"
+                          ,"infconsent"
+                          ,"w_ec_access"
+                          ,"solaw"
+                          ,"vaaban"
+                          ,"w_environment_solar_taxcredit"
+                          ,"frps"
+                          ,"drugs_medical_marijuana"
+                          ,"gambling_lottery_adoption"
+                          ,"guncontrol_assaultweapon_ban"
+                          ,"guncontrol_opencarry"
+                          ,"labor_minwage_abovefed"
+                          ,"labor_right_to_work")
 
+      core <- correlates[, colnames(correlates) %in% core_data_vars]
+      core <- core %>%
+        dplyr::rename(st.abb = st)
+
+      return(left_join(data, core,
+                       # use 'by' to suppress the dplyr joining message
+                       by =  intersect(colnames(data),colnames(core))))
+    } else {
+      return(data)
+    }
   }
-
 }
 

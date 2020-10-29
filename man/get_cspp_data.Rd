@@ -9,6 +9,7 @@ get_cspp_data(
   var_category = NULL,
   states = NULL,
   years = NULL,
+  core = FALSE,
   output = NULL,
   path = ""
 )
@@ -39,6 +40,8 @@ load state abbreviations into the R environment.}
 
   Input can be a vector of years (or a singular year), such as c(2000, 2001,
   2002, 2012) or seq(2000, 2012).}
+
+\item{core}{Default is FALSE. If TRUE, merge the core CSPP data (approximately 70 common and important variables) with the search result.}
 
 \item{output}{Default is NULL. One of "csv", "dta", "rdata". Optional
 parameter for writing the resulting dataframe to a file.}

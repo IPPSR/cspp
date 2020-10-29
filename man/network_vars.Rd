@@ -3,7 +3,7 @@
 \docType{data}
 \name{network_vars}
 \alias{network_vars}
-\title{Variables in the State Network (IPPSR) data}
+\title{State Network (IPPSR) Dataset Variable Names}
 \format{
 An object of class \code{data.frame} with 118 rows and 2 columns.
 }
@@ -11,14 +11,14 @@ An object of class \code{data.frame} with 118 rows and 2 columns.
 network_vars
 }
 \description{
-@name network_vars
+A dataset of the the names of the variables in the IPPSR state networks data.
 }
 \details{
-@docType data
+@name network_vars
+
+ @docType data
 
  @usage data(network_vars)
-
- @format A dataset of the the names of the variables in the IPPSR state networks data.
 
  @keywords datasets
 }
