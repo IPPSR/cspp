@@ -25,5 +25,7 @@ RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    ggraph,
+    igraph
 VignetteBuilder: knitr

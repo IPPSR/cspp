@@ -112,14 +112,14 @@ Given the large number of variables in the data, we provide additional functiona
 
 ```{r}
 # Search for variables by name
-get_var_info(var_names = c("pop","femal")) %>% tibble::glimpse()
+get_var_info(var_names = c("pop","femal")) %>% dplyr::glimpse()
 ```
 
 A similar line of code using the `related_to` parameter, instead of `var_name`, searches within the name **and** the description fields, returning 96 results:
 
 ```{r}
 # Search by name and description:
-get_var_info(related_to = c("pop", "femal")) %>% tibble::glimpse()
+get_var_info(related_to = c("pop", "femal")) %>% dplyr::glimpse()
 ```
 
 You can also return whole categories of variables. The full list of variable categories is available within the help file for `?get_cspp_data`. You can alternatively see the list of categories through the below snippet of code.
@@ -180,7 +180,7 @@ This function takes a variable name or vector of variable names (such as that ge
 
 ```{r}
 # Simple dataframe for one variable
-get_cites(var_names = "poptotal") %>% tibble::glimpse()
+get_cites(var_names = "poptotal") %>% dplyr::glimpse()
 
 # Using get_var_info to return variable citations
 cite_ex <- get_cites(var_names = get_var_info(related_to = "concealed carry")$variable)
@@ -281,7 +281,7 @@ The function `get_network_data` returns a dataset from the [CSPP state networks 
 
 ```{r}
 # Returns dataframe of state dyads
-get_network_data() %>% tibble::glimpse()
+get_network_data() %>% dplyr::glimpse()
 ```
 
 The function has two optional parameters `category` and `merge_data`. If a category or string of categories is specified, it returns variables only in that category (see the data documentation in the link above). Category options are "Distance Travel Migration", "Economic", "Political", "Policy", "Demographic".
@@ -304,14 +304,16 @@ names(network.df)
 
 library(dplyr)
 
-head(cspp_data %>% arrange(st.abb))
+cspp_data %>% 
+  arrange(st.abb) %>%
+  head()
 # the merged value of Alaska's hou_majority value will be mean(c(-0.129, -0.115))
 
 ```
  
 ### Network Plotting Examples
  
- Here are two examples of plotting the state network edgelist data using `igraph` and `ggraph`:
+Here are two examples of plotting the state network edgelist data using `igraph` and `ggraph`:
  
 ```{r message=F, warning=F, dpi=180}
 library(ggraph)
@@ -342,7 +344,7 @@ network.df %>%
   theme(legend.position = "none")
 ```
  
- 
+
 # Citation
 
 > Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data.
