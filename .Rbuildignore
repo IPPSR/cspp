@@ -5,3 +5,4 @@
 ^\.travis\.yml$
 ^doc$
 ^Meta$
+^CRAN-RELEASE$

@@ -53,6 +53,8 @@
 
 get_var_info <- function(var_names = NULL, categories = NULL, related_to = NULL, exact = FALSE){
 
+  codebook <- csppData::codebook
+
   if(!is.null(var_names) & !is.character(var_names)){
     stop("var_names must be a string or character vector.")
   }

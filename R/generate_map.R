@@ -98,8 +98,6 @@
 #'  dplyr::filter(year %in% seq(2001, 2010)))
 #'
 
-
-
 options(dplyr.summarise.inform = FALSE)
 
 generate_map <- function(cspp_data = NULL, var_name = NULL, average_years = FALSE, drop_NA_states = FALSE, poly_args = list(color = "#666666", size = .5)) {

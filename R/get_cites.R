@@ -48,6 +48,8 @@
 
 get_cites <- function(var_names, write_out = FALSE, file_path = NULL, format = "bib", print_cites = FALSE, print_nomatch = TRUE){
 
+  codebook <- csppData::codebook
+
   if(is.data.frame(var_names)){
     var_names <- colnames(var_names)
   }

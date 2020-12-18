@@ -61,6 +61,9 @@
 
 get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years = NULL, core = FALSE, output = NULL, path = ""){
 
+  correlates <- csppData::correlates
+  codebook   <- csppData::codebook
+
   data <- correlates %>%
     dplyr::rename(st.abb = st)
 

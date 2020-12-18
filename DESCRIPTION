@@ -20,7 +20,8 @@ Imports:
     mapproj,
     rlang,
     haven,
-    purrr
+    purrr,
+    csppData
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
