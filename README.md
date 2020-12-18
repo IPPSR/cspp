@@ -672,6 +672,7 @@ network.df %>%
 # Contact
 
 [**Caleb Lucas**](https://caleblucas.com/) - Ph.D. Candidate, Michigan
-State University ([Twitter](https://twitter.com/caleblucas)) <br />
-[**Josh McCrain**](http://joshuamccrain.com) - Post-doc, IPPSR, Michigan
-State University ([Twitter](https://twitter.com/joshmccrain))
+State University ([Twitter](https://twitter.com/calebjlucas?lang=en))
+<br /> [**Josh McCrain**](http://joshuamccrain.com) - Post-doc, IPPSR,
+Michigan State University
+([Twitter](https://twitter.com/joshmccrain?lang=en))
