@@ -39,9 +39,11 @@ cat(
 
 -- Added the `core` argument to the `get_cspp_data` function. Set it to `TRUE` to merge in common and important variables from the CSPP data. Useful for teaching purposes.
 
+-- Added integration with csppData, a package we created to hold the Correlates of State Policy Project data and codebook. The CSPP data is not provided with this package now. It instead automatically loads the csppData package and its data.
+
 ## The Correlates of State Policy
 
-[The Correlates of State Policy Project](http://ippsr.msu.edu/public-policy/correlates-state-policy) compiles more than 2,000 variables across 50 states (+ DC) from 1900-2016. The variables cover 16 broad categories:
+[The Correlates of State Policy Project](http://ippsr.msu.edu/public-policy/correlates-state-policy) compiles more than 2,000 variables across 50 states (+ DC) from 1900-2019. The variables cover 16 broad categories:
 
 * Demographics and Population
 * Economic and Fiscal Policy
