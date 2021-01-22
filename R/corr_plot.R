@@ -39,6 +39,7 @@
 #' @importFrom tidyselect all_of
 #' @importFrom stats na.omit
 #' @import ggcorrplot
+#' @import utils
 #'
 #' @export
 #'
@@ -48,10 +49,10 @@
 #'  "innovatescore_boehmkeskinner", "citi6013", "ranney4_control", "h_diffs"),
 #'  cor_matrix = FALSE)
 
-
 corr_plot <- function(data = NULL, vars = NULL, summarize = TRUE, labels = TRUE, label_size = 3, colors = c("#6D9EC1", "#FFFFFF", "#E46726"), cor_matrix = FALSE){
 
   # filter to only numeric variables
+
 
 
   if(is.null(data) | !is.data.frame(data)) {
