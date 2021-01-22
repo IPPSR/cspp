@@ -21,7 +21,8 @@ Imports:
     rlang,
     haven,
     purrr,
-    csppData
+    csppData,
+    ggcorrplot
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

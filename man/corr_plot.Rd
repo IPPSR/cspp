@@ -57,7 +57,7 @@ plots.
 }
 \examples{
 
-cor_plot(data = get_cspp_data(), vars = c("pollib_median",
+corr_plot(data = get_cspp_data(), vars = c("pollib_median",
  "innovatescore_boehmkeskinner", "citi6013", "ranney4_control", "h_diffs"),
  cor_matrix = FALSE)
 }

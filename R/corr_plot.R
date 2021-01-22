@@ -44,7 +44,7 @@
 #'
 #' @examples
 #'
-#' cor_plot(data = get_cspp_data(), vars = c("pollib_median",
+#' corr_plot(data = get_cspp_data(), vars = c("pollib_median",
 #'  "innovatescore_boehmkeskinner", "citi6013", "ranney4_control", "h_diffs"),
 #'  cor_matrix = FALSE)
 
@@ -108,7 +108,6 @@ corr_plot <- function(data = NULL, vars = NULL, summarize = TRUE, labels = TRUE,
 
  }
 
-
   if(cor_matrix == TRUE) {
 
     return(cor)
@@ -128,7 +127,6 @@ corr_plot <- function(data = NULL, vars = NULL, summarize = TRUE, labels = TRUE,
     return(cor_plot)
 
   }
-
 
 }
 
