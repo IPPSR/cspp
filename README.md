@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cspp: A Tool for the Correlates of State Policy Project Data <img src="doc/cspp.png" height="150" align="right"/>
+# cspp: A Tool for the Correlates of State Policy Project Data <img src="figures/cspp.png" height="150" align="right"/>
 
 <!-- badges: start -->
 
