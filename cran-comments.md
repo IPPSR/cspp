@@ -1,18 +1,14 @@
-## Resubmission: 0.3.1
+## Resubmission: 0.3.2
 
 This is a resubmission. In this version we have:
 
-* Deleted the data files that previously made this package >5mb and, as requested, moved them to a separate, data only package.
+* Updated the package to work with the companion data-only package more efficiently in the future. This will result in fewer submissions to CRAN overall.
 
-* Added a new function, plot_panel, that visualizes the data from the package.
-
-* Edited the existing get_cspp_data function to include a new argument (core) that allows users to merge a set of common variables into the result of their search request regardless of whether it matches those variables.
-
-* Edited the documentation to include more detailed descriptions and uses cases of the functions and data.
+* Corrected a minor bug.
 
 ### Test environments
 
-* local OS X install, R 3.5.2
+* local OS X install, R 4.0
 * win-builder (devel and release)
 
 ### R CMD check results
