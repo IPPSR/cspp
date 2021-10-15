@@ -49,7 +49,7 @@ cat(
 
 ## The Correlates of State Policy
 
-[The Correlates of State Policy Project](http://ippsr.msu.edu/public-policy/correlates-state-policy) compiles more than 2,000 variables across 50 states (+ DC) from 1900-2019. The variables cover 16 broad categories:
+[The Correlates of State Policy Project](http://ippsr.msu.edu/public-policy/correlates-state-policy) compiles more than 2,000 variables across 50 states (+ DC) from 1900-2020. The variables cover 16 broad categories:
 
 * Demographics and Population
 * Economic and Fiscal Policy
@@ -74,7 +74,7 @@ cat(
 ```{r eval=F}
 # For latest developmental verison:
 library(devtools)
-install_github("correlatesstatepolicy/cspp")
+devtools::install_github("correlatesstatepolicy/cspp")
 
 # For CRAN version:
 install.packages("cspp")
@@ -171,7 +171,7 @@ data <- get_cspp_data(vars = c("sess_length", "hou_majority", "term_length"),
 You can also pass the `get_var_info` function into the `vars` parameter of `get_cspp_data`, skipping a step:
 
 ```{r}
-r# Use get_var_info to generate variable vector inline
+# Use get_var_info to generate variable vector inline
 get_cspp_data(vars = get_var_info(related_to = "concealed carry")$variable,
               states = "NC",
               years = 1999)
@@ -235,7 +235,7 @@ If you set `drop_NA_states` to TRUE, and pass the function a dataframe containin
 library(dplyr)
 
 generate_map(get_cspp_data(var_category = "demographics") %>%
-                dplyr::filter(st.abb %in% c("NC", "VA", "SC")),
+                dplyr::filter(st %in% c("NC", "VA", "SC")),
               var_name = "pctpopover65",
               poly_args = list(color = "black"),
               drop_NA_states = TRUE) +
@@ -245,7 +245,7 @@ generate_map(get_cspp_data(var_category = "demographics") %>%
 Since this function returns a `ggplot` object, you can customize it endlessly:
 ```{r out.width='60%'}
 generate_map(get_cspp_data(var_category = "demographics") %>%
-                dplyr::filter(st.abb %in% c("NC", "VA", "SC", "TN", "GA", "WV", "MS", "AL", "KY")),
+                dplyr::filter(st %in% c("NC", "VA", "SC", "TN", "GA", "WV", "MS", "AL", "KY")),
               var_name = "pctpopover65",
               poly_args = list(color = "black"),
               drop_NA_states = TRUE) +
@@ -340,7 +340,7 @@ names(network.df)
 library(dplyr)
 
 cspp_data %>% 
-  arrange(st.abb) %>%
+  arrange(st) %>%
   head()
 # the merged value of Alaska's hou_majority value will be mean(c(-0.129, -0.115))
 
