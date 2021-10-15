@@ -33,8 +33,7 @@ data (vesion 2.4)
 correlation plots and correlation matrices.
 
 – Added the `plot_panel` function which facilitates the creation of
-timeseries plots, similar to
-[panelView](http://yiqingxu.org/software/panelView/panelView.html).
+timeseries plots.
 
 – Added the `core` argument to the `get_cspp_data` function. Set it to
 `TRUE` to merge in common and important variables from the CSPP data.
