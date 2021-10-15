@@ -22,7 +22,7 @@
 #'   most recent year's \code{poptotal} data as an example map.
 #' @param var_name Specify the variable from the dataset passed to
 #'   \code{cspp_data} to plot on the map. If left blank, the first variable that
-#'   is not "year", "st.abb", "state", "state_fips", or "state_icspr" is used.
+#'   is not "year", "st", "state", "state_fips", or "state_icspr" is used.
 #'   Default is NULL.
 #' @param average_years Default is \code{FALSE}. If \code{TRUE}, averages over
 #'   all of the years per state in the dataframe to produce a value to plot on
@@ -78,7 +78,7 @@
 #' # drop_NA_states set to TRUE plots only those states
 #' library(dplyr)
 #' generate_map(get_cspp_data(var_category = "demographics") %>%
-#'                dplyr::filter(st.abb %in% c("NC", "VA", "SC")),
+#'                dplyr::filter(st %in% c("NC", "VA", "SC")),
 #'              var_name = "pctpopover65",
 #'              poly_args = list(color = "black"),
 #'              drop_NA_states = TRUE) +
@@ -113,7 +113,7 @@ generate_map <- function(cspp_data = NULL, var_name = NULL, average_years = FALS
   if(!is.null(var_name)) {
 
     # check user input
-    if(!(var_name %in% names(cspp_data)) | var_name %in% c("year", "st.abb", "state", "state_fips", "state_icpsr", "stateno")) {
+    if(!(var_name %in% names(cspp_data)) | var_name %in% c("year", "st", "state", "state_fips", "state_icpsr", "stateno")) {
       stop("Variable name must be a variable in the dataset passed to this function.")
     }
 
@@ -126,7 +126,7 @@ generate_map <- function(cspp_data = NULL, var_name = NULL, average_years = FALS
   # var_name is *not* provided
   } else {
 
-    var_name <- names(cspp_data)[!(names(cspp_data) %in% c("year", "st.abb", "state", "state_fips", "state_icpsr", "stateno"))] %>% .[1]
+    var_name <- names(cspp_data)[!(names(cspp_data) %in% c("year", "st", "state", "state_fips", "state_icpsr", "stateno"))] %>% .[1]
     cspp_data <- dplyr::select(cspp_data, state, year, plot_var = tidyselect::all_of(var_name))
 
   }

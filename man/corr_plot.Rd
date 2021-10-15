@@ -24,7 +24,7 @@ numeric variables within the passed dataframe.}
 passed dataframe. Otherwise, must be a character vector. The dataframe is
 subset based on variables listed.}
 
-\item{summarize}{Default is TRUE. If TRUE, and if the variable \code{st.abb}
+\item{summarize}{Default is TRUE. If TRUE, and if the variable \code{st}
 is present, the function will create state specific averages for each
 variable in the dataframe. If FALSE, the function will generate the
 correlation matrix and plot for all values in the dataset.}

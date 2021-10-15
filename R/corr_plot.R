@@ -16,7 +16,7 @@
 #' @param vars Default is NULL. If left NULL, uses all variables within the
 #'   passed dataframe. Otherwise, must be a character vector. The dataframe is
 #'   subset based on variables listed.
-#' @param summarize Default is TRUE. If TRUE, and if the variable \code{st.abb}
+#' @param summarize Default is TRUE. If TRUE, and if the variable \code{st}
 #'   is present, the function will create state specific averages for each
 #'   variable in the dataframe. If FALSE, the function will generate the
 #'   correlation matrix and plot for all values in the dataset.
@@ -69,22 +69,22 @@ corr_plot <- function(data = NULL, vars = NULL, summarize = TRUE, labels = TRUE,
       stop("Not all variables are present in the dataframe.")
     }
 
-    if(!("st.abb" %in% names(data)) & summarize == TRUE) {
-      stop("Variable `st.abb` must be present in dataframe.")
+    if(!("st" %in% names(data)) & summarize == TRUE) {
+      stop("Variable `st` (two character state abbreviation) must be present in dataframe.")
     }
 
-    vars <- c(vars, "st.abb")
+    vars <- c(vars, "st")
 
     data <- data %>%
       dplyr::ungroup() %>%
       dplyr::select(tidyselect::all_of(vars)) %>%
-      dplyr::select(where(is.numeric), st.abb)
+      dplyr::select(where(is.numeric), st)
 
   }
 
   if(is.null(vars)) {
 
-    data <- dplyr::select(data, where(is.numeric) | tidyselect::starts_with("st.abb"))
+    data <- dplyr::select(data, where(is.numeric) | tidyselect::starts_with("st"))
 
   }
 
@@ -95,9 +95,9 @@ corr_plot <- function(data = NULL, vars = NULL, summarize = TRUE, labels = TRUE,
    cordf <- data %>%
      na.omit %>%
      dplyr::ungroup() %>%
-     dplyr::group_by(st.abb) %>%
+     dplyr::group_by(st) %>%
      dplyr::summarize_all(list(~mean(., na.rm=T))) %>%
-     dplyr::select(-st.abb)
+     dplyr::select(-st)
 
    cor <- round(cor(cordf), 1)
 

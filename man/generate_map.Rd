@@ -12,7 +12,7 @@ most recent year's \code{poptotal} data as an example map.}
 
 \item{var_name}{Specify the variable from the dataset passed to
 \code{cspp_data} to plot on the map. If left blank, the first variable that
-is not "year", "st.abb", "state", "state_fips", or "state_icspr" is used.
+is not "year", "st", "state", "state_fips", or "state_icspr" is used.
 Default is NULL.}
 
 \item{average_years}{Default is \code{FALSE}. If \code{TRUE}, averages over
@@ -75,7 +75,7 @@ generate_map(get_cspp_data(var_category = "demographics"),
 # drop_NA_states set to TRUE plots only those states
 library(dplyr)
 generate_map(get_cspp_data(var_category = "demographics") \%>\%
-               dplyr::filter(st.abb \%in\% c("NC", "VA", "SC")),
+               dplyr::filter(st \%in\% c("NC", "VA", "SC")),
              var_name = "pctpopover65",
              poly_args = list(color = "black"),
              drop_NA_states = TRUE) +

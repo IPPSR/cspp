@@ -59,15 +59,18 @@
 #'
 #'
 
-get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years = NULL, core = FALSE, output = NULL, path = ""){
+get_cspp_data <- function(vars = NULL,
+                          var_category = NULL,
+                          states = NULL,
+                          years = NULL,
+                          core = FALSE,
+                          output = NULL,
+                          path = ""){
 
   correlates <- csppData::correlates
   codebook   <- csppData::codebook
 
-  data <- correlates %>%
-    dplyr::rename(st.abb = st)
-
-  # TK functionality that checks version of data from internet
+  data <- correlates
 
   #---- vars ----
   if(!is.null(vars) & is.null(var_category)) {
@@ -82,7 +85,9 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
     } else {
 
       data <- data %>%
-        dplyr::select(year:state_icpsr, tidyselect::all_of(vars))
+        dplyr::select(tidyselect::all_of(c("st","stateno","state","state_fips",
+                                           "state_icpsr","year")),
+                      tidyselect::all_of(vars))
 
     }
 
@@ -103,7 +108,9 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
         dplyr::filter(category %in% var_category)
 
       data <- data %>%
-        dplyr::select(year:state_icpsr, tidyselect::all_of(var_cat$variable))
+        dplyr::select(tidyselect::all_of(c("st","stateno","state","state_fips",
+                                           "state_icpsr","year")),
+                      tidyselect::all_of(var_cat$variable))
 
     }
 
@@ -137,7 +144,9 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
     var_cat <- c(var_cat$variable, vars)
 
     data <- data %>%
-      dplyr::select(year:state_icpsr, tidyselect::all_of(var_cat))
+      dplyr::select(tidyselect::all_of(c("st","stateno","state","state_fips",
+                                         "state_icpsr","year")),
+                    tidyselect::all_of(var_cat))
 
   }
 
@@ -150,12 +159,12 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
     if(!all((states %in% state.abb))) {
 
       message(paste("Bad state(s): ", paste(states[!(states %in% unique(correlates$st))], collapse=", "), sep=" "))
-      stop("Invalid state abbreviation.")
+      stop("Invalid state abbreviation(s).")
 
     } else {
 
     data <- data %>%
-      dplyr::filter(st.abb %in% states) %>%
+      dplyr::filter(st %in% states) %>%
       dplyr::arrange(state)
 
     }
@@ -166,9 +175,9 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
   if(!is.null(years)) {
 
     # check user input
-    if(!all(years %in% seq(1900, 2019))) {
+    if(!all(years %in% seq(1900, 2020))) {
 
-      stop("Years must be within seq(1900, 2019)")
+      stop("Years must be within seq(1900, 2020)")
 
     } else {
 
@@ -178,8 +187,6 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
     }
 
   }
-
-
 
   # stop if empty dataframe
   if(nrow(data) == 0) {
@@ -316,8 +323,8 @@ get_cspp_data <- function(vars = NULL, var_category = NULL, states = NULL, years
                           )
 
       core <- correlates[, colnames(correlates) %in% core_data_vars]
-      core <- core %>%
-        dplyr::rename(st.abb = st)
+      # core <- core %>%
+      #   dplyr::rename(st.abb = st)
 
       return(left_join(data, core,
                        # use 'by' to suppress the dplyr joining message

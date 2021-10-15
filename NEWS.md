@@ -1,3 +1,9 @@
+# cspp 0.3.2
+
+* Added integration to the csppData package allowing use of the most recent CSPP data (2.4)
+
+* Fixed a bug, minor improvements
+
 # cspp 0.3.1
 
 * Added a new function, plot_panel, that visualizes the data from the package.

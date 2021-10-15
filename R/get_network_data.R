@@ -77,18 +77,18 @@ get_network_data <- function(category = NULL, merge_data = NULL){
   if(!is.null(merge_data)) {
 
     # check the `data` dataframe structure:
-    if(!("st.abb" %in% names(merge_data))) {
-      stop("Data must be formatted by get_cspp_data() or have a column named `st.abb`")
+    if(!("st" %in% names(merge_data))) {
+      stop("Data must be formatted by get_cspp_data() or have a column named `st`")
     }
 
-    if(length(names(merge_data)[!(names(merge_data) %in% c("year", "stateno", "state", "state_fips", "state_icpsr", "st.abb"))]) == 0) {
+    if(length(names(merge_data)[!(names(merge_data) %in% c("year", "stateno", "state", "state_fips", "state_icpsr", "st"))]) == 0) {
       stop("No variables to merge")
     }
 
     # check if there are multiple rows per state;
     # if so, summarize all variables by state
     check <- merge_data %>%
-      dplyr::group_by(st.abb) %>%
+      dplyr::group_by(st) %>%
       dplyr::mutate(n = dplyr::n())
 
     if(max(check$n) > 1){
@@ -96,15 +96,15 @@ get_network_data <- function(category = NULL, merge_data = NULL){
 
       # drop columns that aren't numeric
       merge_data <- merge_data %>%
-        dplyr::select_if(names(.) %in% c("year", "stateno", "state", "state_fips", "state_icpsr", "st.abb") | purrr::map_lgl(., is.numeric))
+        dplyr::select_if(names(.) %in% c("year", "stateno", "state", "state_fips", "state_icpsr", "st") | purrr::map_lgl(., is.numeric))
 
       merge_data <- merge_data %>%
-        dplyr::group_by(st.abb) %>%
+        dplyr::group_by(st) %>%
         dplyr::summarize_at(dplyr::vars(-tidyselect::any_of(c("year", "stateno", "state", "state_fips", "state_icpsr"))), list(~mean(., na.rm = T)))
 
     }
 
-    network <- dplyr::left_join(network, merge_data, by = c("st.abb1" = "st.abb"))
+    network <- dplyr::left_join(network, merge_data, by = c("st.abb1" = "st"))
 
   }
 

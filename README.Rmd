@@ -35,10 +35,11 @@ cat(
 <!-- * **Version 0.3.2** -- Added the `corr_plot` function to generate correlation plots and correlation matrices.  -->
 **Version 0.3.2** 
 
--- Added the `corr_plot` function which allows the creation of correlation plots and correlation matrices. 
+-- Added integration with `csppData` to allow use of the most recent CSPP data (vesion 2.4)
 
-<!-- * **Version 0.3.1** -- Added the `plot_panel` function which facilitates the creation of timeseries plots, similar to [panelView](http://yiqingxu.org/software/panelView/panelView.html).  -->
-**Version 0.3.1** 
+**Past Updates** 
+
+-- Added the `corr_plot` function which allows the creation of correlation plots and correlation matrices. 
 
 -- Added the `plot_panel` function which facilitates the creation of timeseries plots, similar to [panelView](http://yiqingxu.org/software/panelView/panelView.html). 
 
@@ -170,7 +171,7 @@ data <- get_cspp_data(vars = c("sess_length", "hou_majority", "term_length"),
 You can also pass the `get_var_info` function into the `vars` parameter of `get_cspp_data`, skipping a step:
 
 ```{r}
-# Use get_var_info to generate variable vector inline
+r# Use get_var_info to generate variable vector inline
 get_cspp_data(vars = get_var_info(related_to = "concealed carry")$variable,
               states = "NC",
               years = 1999)
