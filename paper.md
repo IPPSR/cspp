@@ -4,7 +4,7 @@ tags:
   - R
   - dataset exploration
   - US politics
-author:
+authors:
   - name: Caleb Lucas
     orcid: 0000-0003-0049-4680
     affiliation: RAND Corporation
