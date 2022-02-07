@@ -7,9 +7,9 @@ tags:
 authors:
   - name: Caleb Lucas
     orcid: 0000-0003-0049-4680
-    affiliation: RAND Corporation
+    affiliation: 1
   - name: Josh McCrain
-    affiliation: Department of Political Science, University of Utah
+    affiliation: 2
 affiliations:
  - name: RAND Corporation
    index: 1
