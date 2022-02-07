@@ -6,4 +6,4 @@
 ^doc$
 ^Meta$
 ^CRAN-RELEASE$
-^figures/*.png
+^figures/*
