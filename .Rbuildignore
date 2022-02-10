@@ -7,3 +7,4 @@
 ^Meta$
 ^CRAN-RELEASE$
 ^figures/*
+^LICENSE\.md$
