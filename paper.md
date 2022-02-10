@@ -15,6 +15,7 @@ affiliations:
    index: 1
  - name: Department of Political Science, University of Utah
    index: 2
+date: 9 February 2022
 bibliography: paper.bib
 ---
 
