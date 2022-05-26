@@ -20,7 +20,6 @@ library("badger")
 ```
 
 <!-- badges: start -->
-[![Build Status](https://travis-ci.com/correlatesstatepolicy/cspp.svg?branch=master)](https://travis-ci.org/correlatesstatepolicy/cspp)
 ```{r, echo = FALSE, results='asis'}
 cat(
 	badge_cran_release("cspp", "blue")
