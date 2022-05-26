@@ -4,9 +4,6 @@
 # cspp: A Tool for the Correlates of State Policy Project Data <img src="figures/cspp.png" height="150" align="right"/>
 
 <!-- badges: start -->
-
-[![Build
-Status](https://travis-ci.com/correlatesstatepolicy/cspp.svg?branch=master)](https://travis-ci.org/correlatesstatepolicy/cspp)
 [![](https://www.r-pkg.org/badges/version/cspp?color=blue)](https://cran.r-project.org/package=cspp)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/cspp?color=blue)](https://cran.r-project.org/package=cspp)
 <!-- badges: end -->
