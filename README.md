@@ -25,7 +25,7 @@ create map visualizations, and export citations to common file formats
 **Version 0.3.2**
 
 – Added integration with `csppData` to allow use of the most recent CSPP
-data (vesion 2.4)
+data (version 2.4)
 
 **Past Updates**
 
