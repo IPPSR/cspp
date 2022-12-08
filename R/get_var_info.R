@@ -69,15 +69,30 @@ get_var_info <- function(var_names = NULL, categories = NULL, related_to = NULL,
 
   # Not exact match (this will return everything if no args specified, which is good)
   if(exact == FALSE){
-    vars <- paste0(var_names,  collapse = "|")
-    cats <- paste0(categories, collapse = "|")
-    rels <- paste0(related_to, collapse = "|")
-    data <- codebook %>%
-      dplyr::filter(stringr::str_detect(.data$variable, vars)) %>%
-      dplyr::filter(stringr::str_detect(.data$category, cats)) %>%
-      dplyr::filter_at(.vars = vars(.data$variable, .data$short_desc, .data$long_desc,
-                                    .data$category, .data$sources),
-                       .vars_predicate = dplyr::any_vars(stringr::str_detect(., rels)))
+    data <- codebook
+
+    if (length(var_names) > 0) {
+      vars <- paste0(var_names,  collapse = "|")
+      data <- data %>%
+        dplyr::filter(stringr::str_detect(.data$variable, vars))
+    }
+
+    if (length(categories) > 0) {
+      cats <- paste0(categories, collapse = "|")
+      data <- data %>%
+        dplyr::filter(stringr::str_detect(.data$category, cats))
+    }
+
+    if (length(related_to) > 0) {
+      rels <- paste0(related_to, collapse = "|")
+      data <- data %>%
+        dplyr::filter_at(
+          .vars = vars("variable", "short_desc", "long_desc", "category", "sources"),
+          .vars_predicate = dplyr::any_vars(stringr::str_detect(., rels))
+        )
+
+    }
+
     if(nrow(data) == 0){
       stop("Your request returned no results.")
     }

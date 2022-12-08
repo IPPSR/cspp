@@ -63,14 +63,15 @@ get_network_data <- function(category = NULL, merge_data = NULL){
   # category is filled in and valid
   if(!is.null(category) & all(category %in% c("Distance Travel Migration", "Economic", "Political", "Policy", "Demographic"))) {
 
-    user_cat <- category
-
-    vars <- network_vars %>%
-      dplyr::filter(str_detect(category, paste(user_cat, collapse="|")))
+    if (length(category) > 0) {
+      cats <- paste(category, collapse="|")
+      vars <- network_vars %>% dplyr::filter(str_detect(category, cats))
+    } else {
+      vars <- network_vars
+    }
 
     network <- network %>%
       dplyr::select(State1:dyadid, tidyselect::all_of(vars$var_names))
-
   }
 
   # if merge is TRUE
