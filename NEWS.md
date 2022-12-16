@@ -1,3 +1,7 @@
+# cspp 0.3.3
+
+* Fixed an issue resulting from an update in a dependent package (stringr), as requested by CRAN
+
 # cspp 0.3.2
 
 * Added integration to the csppData package allowing use of the most recent CSPP data (2.4)

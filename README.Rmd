@@ -30,13 +30,9 @@ cat(
 
 **cspp** is a package designed to allow a user with only basic knowledge of R to find variables on state politics and policy, create and export datasets from these variables, subset the datasets by states and years, create map visualizations, and export citations to common file formats (e.g., `.bib`). An associated web application is available [here](https://cspp.ippsr.msu.edu/cspp/).
 
-## Updates:
-<!-- * **Version 0.3.2** -- Added the `corr_plot` function to generate correlation plots and correlation matrices.  -->
-**Version 0.3.2** 
+## Recent Updates:
 
 -- Added integration with `csppData` to allow use of the most recent CSPP data (version 2.4)
-
-**Past Updates** 
 
 -- Added the `corr_plot` function which allows the creation of correlation plots and correlation matrices. 
 
@@ -382,9 +378,13 @@ network.df %>%
 # Citation
 
 > Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The Correlates of State Policy Project Data.
-R package version 0.3.2.
+R package version 0.3.3.
 
 # Contact
 
-[**Caleb Lucas**](https://caleblucas.com/) - Ph.D. Candidate, Michigan State University ([Twitter](https://twitter.com/calebjlucas?lang=en)) <br />
-[**Josh McCrain**](http://joshuamccrain.com) - Post-doc, IPPSR, Michigan State University ([Twitter](https://twitter.com/joshmccrain?lang=en))
+[**Caleb Lucas**](https://caleblucas.com/) - Political Scientist, RAND Corporation
+<br />
+[**Josh McCrain**](http://joshuamccrain.com) - Assistant Professor, University of Utah ([Twitter](https://twitter.com/joshmccrain?lang=en))
+
+
+

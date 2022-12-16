@@ -1,10 +1,8 @@
-## Resubmission: 0.3.2
+## Resubmission: 0.3.3
 
-This is a resubmission. In this version we have:
+This is a resubmission. At the request of CRAN, in this version we have:
 
-* Updated the package to work with the companion data-only package more efficiently in the future. This will result in fewer submissions to CRAN overall.
-
-* Corrected a minor bug.
+* Fixed an issue resulting from the stringr update
 
 ### Test environments
 

@@ -1,7 +1,7 @@
 Package: cspp
 Type: Package
 Title: A Tool for the Correlates of State Policy Project Data
-Version: 0.3.2
+Version: 0.3.3
 Author: Caleb Lucas (https://caleblucas.com/) and Joshua McCrain (http://joshuamccrain.com/)
 Maintainer: Caleb Lucas <calebjlucas@gmail.com>
 Description: A tool that imports, subsets, visualizes, and exports the Correlates of State Policy Project dataset assembled by Marty P. Jordan and Matt Grossmann (2020) <http://ippsr.msu.edu/public-policy/correlates-state-policy>. The Correlates data contains over 2000 variables across more than 100 years that pertain to state politics and policy in the United States. Users with only a basic understanding of R can subset this data across multiple dimensions, export their search results, create map visualizations, export the citations associated with their searches, and more.
@@ -23,7 +23,7 @@ Imports:
     purrr,
     csppData,
     ggcorrplot
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Suggests: 
     knitr,
     rmarkdown,

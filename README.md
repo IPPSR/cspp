@@ -4,6 +4,7 @@
 # cspp: A Tool for the Correlates of State Policy Project Data <img src="figures/cspp.png" height="150" align="right"/>
 
 <!-- badges: start -->
+
 [![](https://www.r-pkg.org/badges/version/cspp?color=blue)](https://cran.r-project.org/package=cspp)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/cspp?color=blue)](https://cran.r-project.org/package=cspp)
 <!-- badges: end -->
@@ -15,16 +16,10 @@ create map visualizations, and export citations to common file formats
 (e.g., `.bib`). An associated web application is available
 [here](https://cspp.ippsr.msu.edu/cspp/).
 
-## Updates:
-
-<!-- * **Version 0.3.2** -- Added the `corr_plot` function to generate correlation plots and correlation matrices.  -->
-
-**Version 0.3.2**
+## Recent Updates:
 
 – Added integration with `csppData` to allow use of the most recent CSPP
 data (version 2.4)
-
-**Past Updates**
 
 – Added the `corr_plot` function which allows the creation of
 correlation plots and correlation matrices.
@@ -48,22 +43,22 @@ Project](http://ippsr.msu.edu/public-policy/correlates-state-policy)
 compiles more than 2,000 variables across 50 states (+ DC) from
 1900-2020. The variables cover 16 broad categories:
 
--   Demographics and Population
--   Economic and Fiscal Policy
--   Government
--   Elections
--   Policy Scores and Public Opinion
--   Criminal Justice and the Legal System
--   Education
--   Healthcare and Health Insurance
--   Welfare Policy
--   Rights and Anti-Discrimination Protections
--   Environment
--   Drug and Alcohol Policy
--   Gun Control
--   Labor
--   Transportation
--   Regulatory Policy
+- Demographics and Population
+- Economic and Fiscal Policy
+- Government
+- Elections
+- Policy Scores and Public Opinion
+- Criminal Justice and the Legal System
+- Education
+- Healthcare and Health Insurance
+- Welfare Policy
+- Rights and Anti-Discrimination Protections
+- Environment
+- Drug and Alcohol Policy
+- Gun Control
+- Labor
+- Transportation
+- Regulatory Policy
 
 ## Basic Use: Finding and Returning State Politics Data
 
@@ -143,7 +138,7 @@ and `femal` within the variable name, returning 31 variables:
 ``` r
 # Search for variables by name
 get_var_info(var_names = c("pop","femal")) %>% dplyr::glimpse()
-#> Rows: 44
+#> Rows: 43
 #> Columns: 14
 #> $ variable        <chr> "poptotal", "popdensity", "popfemale", "pctpopfemale",…
 #> $ years           <chr> "1900-2019", "1975-1999", "1994-2000, 2002-2010", "201…
@@ -168,7 +163,7 @@ returning 96 results:
 ``` r
 # Search by name and description:
 get_var_info(related_to = c("pop", "femal")) %>% dplyr::glimpse()
-#> Rows: 146
+#> Rows: 139
 #> Columns: 14
 #> $ variable        <chr> "poptotal", "popdensity", "popfemale", "pctpopfemale",…
 #> $ years           <chr> "1900-2019", "1975-1999", "1994-2000, 2002-2010", "201…
@@ -219,20 +214,19 @@ dataframe and use RStudio’s filter feature to search:
 The function `get_cspp_data` takes the following parameters, all of
 which are optional:
 
--   `vars` - The specific (exact match) variable(s) to pull. Takes a
-    single variable or a vector of variable names.
--   `var_category` - The category or categories from which to pull.
-    Takes a single category or vector of categories from the 16 listed
-    above.
--   `states` - Select which states to grab data from. States must be
-    abbreviated and can take a vector or individual state. See
-    `?state.abb` for an easy way to load state abbreviations.
--   `years` - Takes a single year or a vector or sequence of years, such
-    as `seq(2001, 2005)`.
--   `output` - Choose to write the resulting dataframe straight to a
-    file. Optional outputs include `csv`, `dta`, or `rdata`.
--   `path` - If outputting the file, choose where to write it to. If
-    left blank, the file will save to your working directory.
+- `vars` - The specific (exact match) variable(s) to pull. Takes a
+  single variable or a vector of variable names.
+- `var_category` - The category or categories from which to pull. Takes
+  a single category or vector of categories from the 16 listed above.
+- `states` - Select which states to grab data from. States must be
+  abbreviated and can take a vector or individual state. See
+  `?state.abb` for an easy way to load state abbreviations.
+- `years` - Takes a single year or a vector or sequence of years, such
+  as `seq(2001, 2005)`.
+- `output` - Choose to write the resulting dataframe straight to a file.
+  Optional outputs include `csv`, `dta`, or `rdata`.
+- `path` - If outputting the file, choose where to write it to. If left
+  blank, the file will save to your working directory.
 
 In this example, the resulting dataframe includes the variables
 `c("sess_length", "hou_majority", "term_length")` as well as all
@@ -317,21 +311,21 @@ states filled in based on the value of a given variable (also called
 choropleths). This function returns a `ggplot` object so it is highly
 customizable. The optional parameters are:
 
--   `cspp_data` - A dataframe ideally generated by the `get_cspp_data`
-    function. Any dataframe will work as long as it has the columns
-    `st.abb`, `year`, and any additional column from which to fill in
-    the map.
--   `var_name` - The specific variable to use to fill in the map. If
-    left blank, it will take the first column after `year` and `st.abb`.
--   `average_years` - Default is FALSE. If set to TRUE, this returns a
-    map that averages over all of the years per state in the dataframe.
-    So if there are multiple years of population per state, it plots the
-    average population per state in the panel.
--   `drop_NA_states` - By default, the function keeps states that are
-    missing data, resulting in them being filled in as gray. If this is
-    set to TRUE, the states are dropped. See the example below.
--   `poly_args` - A list of arguments that determine the aesthetics of
-    state shapes. See `ggplot2::geom_polygon` for options.
+- `cspp_data` - A dataframe ideally generated by the `get_cspp_data`
+  function. Any dataframe will work as long as it has the columns
+  `st.abb`, `year`, and any additional column from which to fill in the
+  map.
+- `var_name` - The specific variable to use to fill in the map. If left
+  blank, it will take the first column after `year` and `st.abb`.
+- `average_years` - Default is FALSE. If set to TRUE, this returns a map
+  that averages over all of the years per state in the dataframe. So if
+  there are multiple years of population per state, it plots the average
+  population per state in the panel.
+- `drop_NA_states` - By default, the function keeps states that are
+  missing data, resulting in them being filled in as gray. If this is
+  set to TRUE, the states are dropped. See the example below.
+- `poly_args` - A list of arguments that determine the aesthetics of
+  state shapes. See `ggplot2::geom_polygon` for options.
 
 **Note**: This function will attempt to plot any variable type; however,
 plotting character or factor values on a map will likely result in a
@@ -392,16 +386,16 @@ the CSPP data, the `plot_panel` function takes a dataframe from
 `get_cspp_data` and plots a state-year panel in one of two formats. The
 parameters of this function are as follows:
 
--   `cspp_data` - a dataframe generated by `get_cspp_data` or,
-    alternatively, a dataframe with the columns `st.abb`, `year`, plus
-    one other variable.
--   `var_name` - the name of the variable to be plotted.
--   `years` - the years to include in the panel.
--   `colors` - three color values that are used in the plot. The first
-    color takes the lowest values of the variable, the second the
-    highest, and the third is the color used for NA values.
--   `plot_type` - one of “grid” or “line”. Defaults to “grid”. Both are
-    displayed next.
+- `cspp_data` - a dataframe generated by `get_cspp_data` or,
+  alternatively, a dataframe with the columns `st.abb`, `year`, plus one
+  other variable.
+- `var_name` - the name of the variable to be plotted.
+- `years` - the years to include in the panel.
+- `colors` - three color values that are used in the plot. The first
+  color takes the lowest values of the variable, the second the highest,
+  and the third is the color used for NA values.
+- `plot_type` - one of “grid” or “line”. Defaults to “grid”. Both are
+  displayed next.
 
 The function returns a `ggplot2` object, making it easier to change and
 add layers onto the generated plot.
@@ -719,12 +713,11 @@ network.df %>%
 # Citation
 
 > Caleb Lucas and Joshua McCrain (2020). cspp: A Package for The
-> Correlates of State Policy Project Data. R package version 0.3.2.
+> Correlates of State Policy Project Data. R package version 0.3.3.
 
 # Contact
 
-[**Caleb Lucas**](https://caleblucas.com/) - Ph.D. Candidate, Michigan
-State University ([Twitter](https://twitter.com/calebjlucas?lang=en))
-<br /> [**Josh McCrain**](http://joshuamccrain.com) - Post-doc, IPPSR,
-Michigan State University
+[**Caleb Lucas**](https://caleblucas.com/) - Political Scientist, RAND
+Corporation <br /> [**Josh McCrain**](http://joshuamccrain.com) -
+Assistant Professor, University of Utah
 ([Twitter](https://twitter.com/joshmccrain?lang=en))
